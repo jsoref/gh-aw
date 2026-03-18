@@ -746,7 +746,7 @@ func downloadRunArtifactsConcurrent(ctx context.Context, runs []WorkflowRun, out
 					CLIVersion:              GetVersion(),
 					RunID:                   run.DatabaseID,
 					ProcessedAt:             time.Now(),
-					Run:                     run,
+					Run:                     result.Run,
 					Metrics:                 metrics,
 					AccessAnalysis:          accessAnalysis,
 					FirewallAnalysis:        firewallAnalysis,
