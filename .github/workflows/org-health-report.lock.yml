@@ -28,7 +28,7 @@
 #     - shared/python-dataviz.md
 #     - shared/reporting.md
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"f93325666a8e9a4a98974567175cf39a159edcb142410d6e76bae72e212772cf","strict":true}
+# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"f93325666a8e9a4a98974567175cf39a159edcb142410d6e76bae72e212772cf","strict":true,"agent_id":"copilot"}
 
 name: "Organization Health Report"
 "on":
@@ -579,7 +579,8 @@ jobs:
                 },
                 "guard-policies": {
                   "allow-only": {
-                    "min-integrity": "approved"
+                    "min-integrity": "approved",
+                    "repos": "all"
                   }
                 }
               },
@@ -588,6 +589,13 @@ jobs:
                 "url": "http://host.docker.internal:$GH_AW_SAFE_OUTPUTS_PORT",
                 "headers": {
                   "Authorization": "\${GH_AW_SAFE_OUTPUTS_API_KEY}"
+                },
+                "guard-policies": {
+                  "write-sink": {
+                    "accept": [
+                      "*"
+                    ]
+                  }
                 }
               }
             },
