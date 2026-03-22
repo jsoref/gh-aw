@@ -120,7 +120,6 @@ tools:
     toolsets: [issues]
 permissions:
   contents: read
-  issues: write
 ---
 
 # Research Agent

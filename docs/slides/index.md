@@ -240,7 +240,8 @@ jobs:
 
   safe-outputs: needs[agent] # isolated container
     run: gh issue comment add ...
-    permissions: issues: write
+    permissions:
+      issues: write
 ```
 
 > Markdown workflows compiled to GitHub Actions YAML for auditability

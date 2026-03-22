@@ -1,15 +1,15 @@
 ---
-title: Using MCPs
+title: Using Custom MCP Servers
 description: How to use Model Context Protocol (MCP) servers with GitHub Agentic Workflows to connect AI agents to external tools, databases, and services.
 sidebar:
   order: 4
 ---
 
-This guide covers using [Model Context Protocol](/gh-aw/reference/glossary/#mcp-model-context-protocol) (MCP) servers with GitHub Agentic Workflows.
+This guide covers using custom [Model Context Protocol](/gh-aw/reference/glossary/#mcp-model-context-protocol) servers with GitHub Agentic Workflows.
 
 [Model Context Protocol](/gh-aw/reference/glossary/#mcp-model-context-protocol) (MCP, a standard for AI tool integration) is a standardized protocol that allows AI agents to securely connect to external tools, databases, and services. GitHub Agentic Workflows uses MCP to integrate databases and APIs, extend AI capabilities with specialized functionality, maintain standardized security controls, and enable composable workflows by mixing multiple MCP servers.
 
-GitHub Agentic Workflows includes built-in GitHub MCP integration with comprehensive repository access. See [Tools](/gh-aw/reference/tools/) for details. This guide focuses on using custom MCP servers to connect to external services and databases.
+GitHub Agentic Workflows includes built-in GitHub MCP integration with comprehensive repository access. See [GitHub Tools](/gh-aw/reference/github-tools/) for details. This guide focuses on using custom MCP servers to connect to external services and databases.
 
 ## Manually Configuring a Custom MCP Server
 
@@ -21,7 +21,6 @@ on: issues
 
 permissions:
   contents: read
-  issues: write
 
 mcp-servers:
   microsoftdocs:

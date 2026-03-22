@@ -1,5 +1,5 @@
 ---
-title: GitHub (Read Permissions)
+title: GitHub Tools Read Permissions
 description: Configure GitHub Actions permissions for agentic workflows
 sidebar:
   order: 500

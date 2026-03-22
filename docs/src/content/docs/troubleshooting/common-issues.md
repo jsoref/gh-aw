@@ -239,20 +239,6 @@ safe-outputs:
     labels: [automation]
 ```
 
-### Token Permission Errors
-
-Grant permissions or use a custom token:
-
-```yaml wrap
-permissions:
-  contents: write
-  issues: write
-
-# Alternative: custom token
-safe-outputs:
-  github-token: ${{ secrets.CUSTOM_PAT }}
-```
-
 ### Project Field Type Errors
 
 GitHub Projects reserves field names like `REPOSITORY`. Use alternatives (`repo`, `source_repository`, `linked_repo`):

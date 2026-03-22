@@ -2167,13 +2167,12 @@ safe-outputs:
     # Array of strings
 
   # Enable AI agents to create GitHub issues from workflow output. Supports title
-  # prefixes, automatic labeling, assignees, and cross-repository creation. Does not
-  # require 'issues: write' permission.
+  # prefixes, automatic labeling, assignees, and cross-repository creation.
   # (optional)
   # This field supports multiple formats (oneOf):
 
   # Option 1: Configuration for automatically creating GitHub issues from AI
-  # workflow output. The main job does not need 'issues: write' permission.
+  # workflow output.
   create-issue:
     # Optional prefix to add to the beginning of the issue title (e.g., '[ai] ' or
     # '[analysis] ')
