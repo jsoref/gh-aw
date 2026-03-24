@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const { pathToFileURL } = require("url");
+const { ERR_CONFIG, ERR_VALIDATION } = require("./error_codes.cjs");
 
 /**
  * @typedef {{ name: string, path: string, patterns?: string[], context?: string }} QmdCheckout
@@ -109,7 +110,7 @@ async function writeSummary(config, updateResult, embedResult) {
 async function main() {
   const configJson = process.env.QMD_CONFIG_JSON;
   if (!configJson) {
-    core.setFailed("QMD_CONFIG_JSON environment variable not set");
+    core.setFailed(`${ERR_CONFIG}: QMD_CONFIG_JSON environment variable not set`);
     return;
   }
 
@@ -120,7 +121,7 @@ async function main() {
   // The package is installed into the gh-aw actions directory by a prior npm-install step.
   const qmdIndexPath = path.join(__dirname, "node_modules", "@tobilu", "qmd", "dist", "index.js");
   if (!fs.existsSync(qmdIndexPath)) {
-    core.setFailed(`@tobilu/qmd not found at ${qmdIndexPath}. The 'Install @tobilu/qmd SDK' step must run first.`);
+    core.setFailed(`${ERR_CONFIG}: @tobilu/qmd not found at ${qmdIndexPath}. The 'Install @tobilu/qmd SDK' step must run first.`);
     return;
   }
 
@@ -170,7 +171,7 @@ async function main() {
       const repoSlug = search.repo || process.env.GITHUB_REPOSITORY || "";
       const slugParts = repoSlug.split("/");
       if (slugParts.length < 2 || !slugParts[0] || !slugParts[1]) {
-        core.setFailed(`qmd search "${collectionName}": invalid repository slug "${repoSlug}" (expected "owner/repo")`);
+        core.setFailed(`${ERR_VALIDATION}: qmd search "${collectionName}": invalid repository slug "${repoSlug}" (expected "owner/repo")`);
         return;
       }
       const [owner, repo] = slugParts;
@@ -232,7 +233,7 @@ async function main() {
     if (minCount > 0) {
       const fileCount = fs.readdirSync(searchDir).length;
       if (fileCount < minCount) {
-        core.setFailed(`qmd search "${collectionName}" returned ${fileCount} results, minimum is ${minCount}`);
+        core.setFailed(`${ERR_VALIDATION}: qmd search "${collectionName}" returned ${fileCount} results, minimum is ${minCount}`);
         return;
       }
     }
