@@ -10,9 +10,7 @@ mermaid.initialize({ startOnLoad: true });
 
 # GitHub Agentic Workflows
 
-## Agentic Processes for Continuous AI
-
-### Technical Preview
+## Technical Preview
 
 <https://github.com/github/gh-aw>
 
@@ -20,25 +18,11 @@ mermaid.initialize({ startOnLoad: true });
 
 # Software Engineer → Agentic Engineer
 
-| Software Engineer | Agentic Engineer |
-|---|---|
-| Writes code manually | Writes prompts & workflows |
-| Reviews PRs | Reviews agent outputs |
-| Runs CI/CD pipelines | Orchestrates AI agents |
-| Debugging code | Debugging agent behavior |
-
-> The role evolves: from coding to orchestrating agents
+> From writing code to designing agentic processes
 
 ---
 
 # Agentic Human Processes
-
-## Humans and AI collaborate at every stage
-
-- **Author** — Write natural language workflows
-- **Reviewer** — Approve plans and validate outputs
-- **Supervisor** — Monitor running agents and handle exceptions
-- **Debugger** — Diagnose workflow behavior and improve prompts
 
 > Human oversight, AI execution
 
@@ -46,28 +30,9 @@ mermaid.initialize({ startOnLoad: true });
 
 # Pull Request Process
 
-<pre class="mermaid">
-flowchart TD
-    PR["Pull Request Opened"] --> Activation["Activation Job\nAuthorize & Sanitize"]
-    Activation --> Agent["Agent Job\nAnalyze Changes"]
-    Agent --> SafeOutput["Safe Outputs Job\nPost Comment / Review"]
-    SafeOutput --> Human{"Human Review"}
-    Human -->|Approve| Merge["Merge PR"]
-    Human -->|"Request Changes"| Agent
-</pre>
-
 ---
 
 # Research → Plan → Act
-
-<pre class="mermaid">
-flowchart LR
-    Research["Research\nGather context\nAnalyze codebase"] --> Plan["Plan\nDefine approach\nCreate checklist"]
-    Plan --> Act["Act\nImplement changes\nCreate PR"]
-    Act --> Human{"Human Review"}
-    Human -->|Approved| Done["Done ✓"]
-    Human -->|"Revise"| Research
-</pre>
 
 ---
 
@@ -117,6 +82,25 @@ jobs:
     steps:
       - run: copilot -p "Summarize issue and respond in a comment."
 ```
+
+---
+
+# CA with GitHub Agentic Workflows
+
+```yaml
+---
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: read # read-only by default
+safe-outputs:
+  add-comment: # guardrails for write operations
+---
+Summarize issue and respond in a comment.
+```
+
+> Natural language → compiled to GitHub Actions YAML
 
 ---
 
@@ -170,43 +154,6 @@ These environments share one superpower:
 
 ---
 
-# Applying These Principles to Agentic Workflows
-
-| Beginner Runtime | Agentic Workflows |
-|---|---|
-| Runs in the browser | Container isolation |
-| Safe defaults | Read-only permissions |
-| Guardrailed actions | Safe outputs |
-| Real outputs | Issues, PRs, comments |
-| Delightful UX | Natural language workflows |
-
-> Same philosophy, enterprise scale
-
----
-
-# Combine GitHub Actions and SWE Agents **SAFELY**
-
----
-
-# Loved by Developers
-
-```yaml
----
-on:
-  issues:
-    types: [opened]
-permissions:
-  contents: read # read-only by default
-safe-outputs:
-  add-comment: # guardrails for write operations
----
-Summarize issue and respond in a comment.
-```
-
-> Natural language → compiled to GitHub Actions YAML
-
----
-
 # Trusted by Enterprises
 
 ## Safe by default
@@ -224,27 +171,6 @@ Summarize issue and respond in a comment.
 - **Safe Outputs**: Deterministic, guardrailed outputs
 
 - **Plan / Check / Act**: Human in the loop
-
----
-
-# Compiled Action YAML
-
-```yaml
-jobs:
-  activation:
-    run: check authorization
-
-  agent: needs[activation] # isolated container
-    permissions: contents: read # read-only!
-    run: copilot -p "Analyze package.json for breaking changes..."
-
-  safe-outputs: needs[agent] # isolated container
-    run: gh issue comment add ...
-    permissions:
-      issues: write
-```
-
-> Markdown workflows compiled to GitHub Actions YAML for auditability
 
 ---
 
