@@ -883,6 +883,73 @@ describe("create_pull_request - configured reviewers", () => {
     expect(global.core.warning).toHaveBeenCalledWith(expect.stringContaining("Failed to request reviewers"));
   });
 
+  it("should retry addLabels on race condition and warn after all retries exhausted", async () => {
+    // GitHub API transiently fails to resolve the PR node ID immediately after creation.
+    // withRetry retries 3 times (4 total calls); after exhaustion it should warn but NOT fall back to an issue.
+    vi.useFakeTimers();
+    try {
+      global.github.rest.issues.addLabels.mockRejectedValue(new Error("Validation Failed: Could not resolve to a node with the global id of 'PR_kwDOPc1QR87OOJzM'."));
+
+      const { main } = require("./create_pull_request.cjs");
+      const handler = await main({ labels: ["automation"], allow_empty: true });
+
+      const resultPromise = handler({ title: "Test PR", body: "Test body", labels: ["automation"] }, {});
+
+      // Advance all fake timers to skip the retry delays (3s, 6s, 12s)
+      await vi.runAllTimersAsync();
+
+      const result = await resultPromise;
+
+      expect(result.success).toBe(true);
+      expect(result.fallback_used).toBeUndefined();
+      // addLabels called once initially + 3 retries = 4 total
+      expect(global.github.rest.issues.addLabels).toHaveBeenCalledTimes(4);
+      expect(global.core.warning).toHaveBeenCalledWith(expect.stringContaining("Failed to add labels to PR #42"));
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("should succeed when addLabels recovers on a retry", async () => {
+    // Simulates a transient race condition that resolves on the second attempt.
+    vi.useFakeTimers();
+    try {
+      global.github.rest.issues.addLabels.mockRejectedValueOnce(new Error("Validation Failed: Could not resolve to a node with the global id of 'PR_kwDOPc1QR87OOJzM'.")).mockResolvedValue({});
+
+      const { main } = require("./create_pull_request.cjs");
+      const handler = await main({ labels: ["automation"], allow_empty: true });
+
+      const resultPromise = handler({ title: "Test PR", body: "Test body", labels: ["automation"] }, {});
+
+      await vi.runAllTimersAsync();
+
+      const result = await resultPromise;
+
+      expect(result.success).toBe(true);
+      // addLabels called twice: first attempt fails, second succeeds
+      expect(global.github.rest.issues.addLabels).toHaveBeenCalledTimes(2);
+      // No warning about final failure — the retry succeeded
+      expect(global.core.warning).not.toHaveBeenCalledWith(expect.stringContaining("Failed to add labels to PR #42"));
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("should not retry addLabels for non-transient errors", async () => {
+    // Non-transient errors (e.g., 404 label not found) should not be retried.
+    global.github.rest.issues.addLabels.mockRejectedValue(new Error("Validation Failed: label does not exist"));
+
+    const { main } = require("./create_pull_request.cjs");
+    const handler = await main({ labels: ["nonexistent"], allow_empty: true });
+
+    const result = await handler({ title: "Test PR", body: "Test body", labels: ["nonexistent"] }, {});
+
+    expect(result.success).toBe(true);
+    // No retry — called only once since the error is non-transient
+    expect(global.github.rest.issues.addLabels).toHaveBeenCalledTimes(1);
+    expect(global.core.warning).toHaveBeenCalledWith(expect.stringContaining("Failed to add labels to PR #42"));
+  });
+
   it("should accept reviewers as a comma-separated string", async () => {
     const { main } = require("./create_pull_request.cjs");
     const handler = await main({ reviewers: "user1,user2", allow_empty: true });
