@@ -13,7 +13,7 @@ func TestMCPCacheStore_ConcurrentPermissionAccess(t *testing.T) {
 	cache := newMCPCacheStore()
 	cache.permissionTTL = 50 * time.Millisecond
 
-	// Pre-populate
+	// Prepopulate
 	for i := range 5 {
 		cache.SetPermission(fmt.Sprintf("actor%d", i), "owner/repo", "write")
 	}

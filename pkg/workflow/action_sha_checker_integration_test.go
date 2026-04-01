@@ -22,10 +22,10 @@ func TestActionSHAValidationIntegration(t *testing.T) {
 		t.Fatalf("Failed to create cache directory: %v", err)
 	}
 
-	// Create a cache with some pre-populated data
+	// Create a cache with some prepopulated data
 	cache := NewActionCache(tmpDir)
 
-	// Pre-populate cache with "current" SHAs
+	// Prepopulate cache with "current" SHAs
 	cache.Set("actions/checkout", "v5", "93cb6efe18208431cddfb8368fd83d5badbf9bfd")
 	cache.Set("actions/setup-node", "v6", "395ad3262231945c25e8478fd5baf05154b1d79f")
 
@@ -106,7 +106,7 @@ jobs:
 		t.Fatalf("Failed to create lock file: %v", err)
 	}
 
-	// Create cache but don't pre-populate it (simulates first run)
+	// Create cache but don't prepopulate it (simulates first run)
 	cache := NewActionCache(tmpDir)
 
 	// Validation should handle missing cache gracefully

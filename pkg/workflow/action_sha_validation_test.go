@@ -197,7 +197,7 @@ Just a simple test workflow.
 }
 
 // TestActionSHAValidationSavesCache tests that cache is persisted after validation
-// This test doesn't require network access and uses a pre-populated cache
+// This test doesn't require network access and uses a prepopulated cache
 func TestActionSHAValidationSavesCache(t *testing.T) {
 	testDir := testutil.TempDir(t, "test-*")
 
@@ -216,7 +216,7 @@ jobs:
 		t.Fatalf("Failed to write lock file: %v", err)
 	}
 
-	// Create a cache and pre-populate it with entries
+	// Create a cache and prepopulate it with entries
 	cache := NewActionCache(testDir)
 	cache.Set("actions/checkout", "v5", "93cb6efe18208431cddfb8368fd83d5badbf9bfd")
 

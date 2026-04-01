@@ -1164,7 +1164,7 @@ func TestRepoMemoryWikiPushAllowedRepos(t *testing.T) {
 
 	pushJobOutput := strings.Join(pushJob.Steps, "\n")
 	assert.Contains(t, pushJobOutput, "REPO_MEMORY_ALLOWED_REPOS: ${{ github.repository }}.wiki",
-		"Wiki push step should pre-populate allowed repos with the wiki repo")
+		"Wiki push step should prepopulate allowed repos with the wiki repo")
 }
 
 // TestRepoMemoryNonWikiPushNoAllowedRepos tests that non-wiki mode does NOT set REPO_MEMORY_ALLOWED_REPOS

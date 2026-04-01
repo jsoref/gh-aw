@@ -957,13 +957,13 @@ func TestGetActionPinWithData_ExactVersionResolution(t *testing.T) {
 			// This mimics what would happen if another workflow referenced "v4.6.2"
 			// but we request "v4" - we should get back "v4" not "v4.6.2"
 			if tt.repo == "actions/upload-artifact" && tt.requestedVer == "v4" {
-				// Pre-populate cache with a more precise version to test that
+				// Prepopulate cache with a more precise version to test that
 				// we don't inappropriately use it
 				cache.Set(tt.repo, "v4.6.2", "c5eb11a343de00d7472c5a5c6598bc1f1fd51144")
 				// Now add the exact version we're requesting
 				cache.Set(tt.repo, "v4", "c5eb11a343de00d7472c5a5c6598bc1f1fd51144")
 			} else if tt.repo == "actions/upload-artifact" && tt.requestedVer == "v5" {
-				// Pre-populate cache with a more precise version
+				// Prepopulate cache with a more precise version
 				cache.Set(tt.repo, "v5.0.0", "330a01c490aca151604b8cf639adc76d48f6c5d4")
 				// Now add the exact version we're requesting
 				cache.Set(tt.repo, "v5", "330a01c490aca151604b8cf639adc76d48f6c5d4")

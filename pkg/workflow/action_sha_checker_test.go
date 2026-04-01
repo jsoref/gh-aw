@@ -127,7 +127,7 @@ func TestCheckActionSHAUpdates(t *testing.T) {
 		},
 	}
 
-	// Pre-populate the cache with known values
+	// Prepopulate the cache with known values
 	// For actions/checkout@v5, use the same SHA (up to date)
 	cache.Set("actions/checkout", "v5", "93cb6efe18208431cddfb8368fd83d5badbf9bfd")
 	// For actions/setup-node@v6, use a different SHA (needs update)
