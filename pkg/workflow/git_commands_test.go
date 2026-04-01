@@ -228,7 +228,7 @@ func TestAdditionalClaudeToolsForSafeOutputs(t *testing.T) {
 
 			// If we don't expect editing tools, verify they aren't there due to this feature
 			if !tt.expectEditingTools {
-				// Only check if we started with empty tools - if there were pre-existing tools, they should remain
+				// Only check if we started with empty tools - if there were preexisting tools, they should remain
 				if len(tt.tools) == 0 {
 					for _, tool := range expectedEditingTools {
 						if foundEditingTools[tool] {

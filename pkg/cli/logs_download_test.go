@@ -241,7 +241,7 @@ func TestRetryCriticalArtifactsSkipsExisting(t *testing.T) {
 	// When a critical artifact directory already exists, retryCriticalArtifacts should
 	// skip it (no gh CLI call). We verify by creating existing dirs and checking that
 	// the function completes without error (gh CLI is not available in unit tests, so
-	// only pre-existing dirs will be skipped; missing ones will fail the gh call silently).
+	// only preexisting dirs will be skipped; missing ones will fail the gh call silently).
 	tmpDir := testutil.TempDir(t, "retry-critical-*")
 
 	// Create all critical artifact dirs so none need downloading

@@ -1358,7 +1358,7 @@ func TestUpgradeCopilotSetupSteps_SHAPinnedNoQuotes(t *testing.T) {
 		t.Fatalf("Failed to create workflows directory: %v", err)
 	}
 
-	// Pre-existing file with a version-tagged reference and extra comments/fields
+	// Preexisting file with a version-tagged reference and extra comments/fields
 	// that must be preserved unchanged.
 	existingContent := `name: "Copilot Setup Steps"
 

@@ -514,9 +514,9 @@ imports:
 	// The existing file must be untouched and not added to the tracker.
 	gotContent, readErr := os.ReadFile(existingFile)
 	require.NoError(t, readErr)
-	assert.Equal(t, existingContent, gotContent, "pre-existing file must not be modified when force=false")
-	assert.Empty(t, tracker.CreatedFiles, "pre-existing file must not appear in CreatedFiles")
-	assert.Empty(t, tracker.ModifiedFiles, "pre-existing file must not appear in ModifiedFiles")
+	assert.Equal(t, existingContent, gotContent, "preexisting file must not be modified when force=false")
+	assert.Empty(t, tracker.CreatedFiles, "preexisting file must not appear in CreatedFiles")
+	assert.Empty(t, tracker.ModifiedFiles, "preexisting file must not appear in ModifiedFiles")
 }
 
 // TestFetchAndSaveRemoteFrontmatterImports_PathTraversal verifies that import paths that
@@ -781,7 +781,7 @@ safe-outputs:
 // dispatch workflow file is not re-downloaded when force=false.
 func TestFetchAndSaveRemoteDispatchWorkflows_SkipExistingWithoutForce(t *testing.T) {
 	tmpDir := t.TempDir()
-	// Pre-existing file with a matching source field so it is treated as same-source (skip).
+	// Preexisting file with a matching source field so it is treated as same-source (skip).
 	existingContent := []byte(`---
 source: github/gh-aw/.github/workflows/dependent-workflow.md@v1.0.0
 engine: copilot
@@ -814,15 +814,15 @@ safe-outputs:
 	// The existing file must be untouched (no network call attempted because file already exists)
 	gotContent, readErr := os.ReadFile(existingFile)
 	require.NoError(t, readErr)
-	assert.Equal(t, existingContent, gotContent, "pre-existing dispatch workflow file must not be modified when force=false")
+	assert.Equal(t, existingContent, gotContent, "preexisting dispatch workflow file must not be modified when force=false")
 }
 
-// TestFetchAndSaveRemoteDispatchWorkflows_TrackerUpdated verifies that a pre-existing file
+// TestFetchAndSaveRemoteDispatchWorkflows_TrackerUpdated verifies that a preexisting file
 // that is skipped due to force=false does NOT appear in any tracker list.
 func TestFetchAndSaveRemoteDispatchWorkflows_TrackerNoOpOnExisting(t *testing.T) {
 	tmpDir := t.TempDir()
 	existingFile := filepath.Join(tmpDir, "dep.md")
-	// Pre-existing file with a matching source field so it is treated as same-source (skip).
+	// Preexisting file with a matching source field so it is treated as same-source (skip).
 	existingContent := `---
 source: github/gh-aw/.github/workflows/dep.md@v1.0.0
 engine: copilot
@@ -854,8 +854,8 @@ safe-outputs:
 
 	err := fetchAndSaveRemoteDispatchWorkflows(context.Background(), content, spec, tmpDir, false, false, tracker)
 	require.NoError(t, err)
-	assert.Empty(t, tracker.CreatedFiles, "pre-existing file must not appear in CreatedFiles")
-	assert.Empty(t, tracker.ModifiedFiles, "pre-existing file must not appear in ModifiedFiles")
+	assert.Empty(t, tracker.CreatedFiles, "preexisting file must not appear in CreatedFiles")
+	assert.Empty(t, tracker.ModifiedFiles, "preexisting file must not appear in ModifiedFiles")
 }
 
 // TestFetchAndSaveRemoteDispatchWorkflows_InvalidRepoSlug verifies that an invalid
@@ -1043,7 +1043,7 @@ resources:
 // file is not re-downloaded when force=false.
 func TestFetchAndSaveRemoteResources_SkipExistingWithoutForce(t *testing.T) {
 	tmpDir := t.TempDir()
-	// Pre-existing file with a matching source field so it is treated as same-source (skip).
+	// Preexisting file with a matching source field so it is treated as same-source (skip).
 	existingContent := []byte(`---
 source: github/gh-aw/.github/workflows/triage-issue.md@v1.0.0
 engine: copilot
@@ -1075,7 +1075,7 @@ resources:
 
 	gotContent, readErr := os.ReadFile(existingFile)
 	require.NoError(t, readErr)
-	assert.Equal(t, existingContent, gotContent, "pre-existing resource file must not be modified when force=false")
+	assert.Equal(t, existingContent, gotContent, "preexisting resource file must not be modified when force=false")
 }
 
 // TestFetchAndSaveRemoteResources_PathTraversal verifies that path traversal attempts are rejected.
@@ -1133,12 +1133,12 @@ resources:
 	assert.Empty(t, entries, "no files should be created for an invalid RepoSlug")
 }
 
-// TestFetchAndSaveRemoteResources_TrackerNoOpOnExisting verifies that a pre-existing resource
+// TestFetchAndSaveRemoteResources_TrackerNoOpOnExisting verifies that a preexisting resource
 // that is skipped (force=false) does NOT appear in any tracker list.
 func TestFetchAndSaveRemoteResources_TrackerNoOpOnExisting(t *testing.T) {
 	tmpDir := t.TempDir()
 	existingFile := filepath.Join(tmpDir, "resource.md")
-	// Pre-existing file with a matching source field so it is treated as same-source (skip).
+	// Preexisting file with a matching source field so it is treated as same-source (skip).
 	existingContent := `---
 source: github/gh-aw/.github/workflows/resource.md@v1.0.0
 engine: copilot
@@ -1170,8 +1170,8 @@ resources:
 
 	err := fetchAndSaveRemoteResources(content, spec, tmpDir, false, false, tracker)
 	require.NoError(t, err)
-	assert.Empty(t, tracker.CreatedFiles, "pre-existing file must not appear in CreatedFiles")
-	assert.Empty(t, tracker.ModifiedFiles, "pre-existing file must not appear in ModifiedFiles")
+	assert.Empty(t, tracker.CreatedFiles, "preexisting file must not appear in CreatedFiles")
+	assert.Empty(t, tracker.ModifiedFiles, "preexisting file must not appear in ModifiedFiles")
 }
 
 // --- fetchAndSaveDispatchWorkflowsFromParsedFile tests ---
@@ -1326,14 +1326,14 @@ Process incoming issues.
 
 	fetchAndSaveDispatchWorkflowsFromParsedFile(mainPath, spec, workflowsDir, false, false, nil)
 
-	// The pre-existing dispatch workflow must not be modified.
+	// The preexisting dispatch workflow must not be modified.
 	got, err := os.ReadFile(triagePath)
 	require.NoError(t, err)
-	assert.Equal(t, existingContent, got, "pre-existing dispatch workflow file must not be modified")
+	assert.Equal(t, existingContent, got, "preexisting dispatch workflow file must not be modified")
 }
 
 // TestFetchAndSaveDispatchWorkflowsFromParsedFile_SharedWorkflow_TrackerNoOpOnExisting verifies
-// that a pre-existing dispatch workflow discovered via a shared workflow import does NOT appear
+// that a preexisting dispatch workflow discovered via a shared workflow import does NOT appear
 // in the tracker's created or modified lists when force=false.
 func TestFetchAndSaveDispatchWorkflowsFromParsedFile_SharedWorkflow_TrackerNoOpOnExisting(t *testing.T) {
 	tmpDir := t.TempDir()
@@ -1386,8 +1386,8 @@ imports:
 
 	fetchAndSaveDispatchWorkflowsFromParsedFile(mainPath, spec, workflowsDir, false, false, tracker)
 
-	assert.Empty(t, tracker.CreatedFiles, "pre-existing dispatch workflow must not appear in CreatedFiles")
-	assert.Empty(t, tracker.ModifiedFiles, "pre-existing dispatch workflow must not appear in ModifiedFiles")
+	assert.Empty(t, tracker.CreatedFiles, "preexisting dispatch workflow must not appear in CreatedFiles")
+	assert.Empty(t, tracker.ModifiedFiles, "preexisting dispatch workflow must not appear in ModifiedFiles")
 }
 
 // TestFetchAndSaveDispatchWorkflowsFromParsedFile_SharedWorkflow_MacroWorkflowSkipped verifies
@@ -1500,7 +1500,7 @@ func TestFetchDispatchWorkflows_ConflictDifferentSource(t *testing.T) {
 	dir := t.TempDir()
 	workflowsDir := dir
 
-	// Pre-existing file from a DIFFERENT source repo
+	// Preexisting file from a DIFFERENT source repo
 	existingPath := filepath.Join(dir, "target-workflow.md")
 	existingContent := `---
 source: otherorg/other-repo/.github/workflows/target-workflow.md@v1
@@ -1536,7 +1536,7 @@ func TestFetchDispatchWorkflows_SameSourceSkips(t *testing.T) {
 	dir := t.TempDir()
 	workflowsDir := dir
 
-	// Pre-existing file from the SAME source repo
+	// Preexisting file from the SAME source repo
 	existingPath := filepath.Join(dir, "target-workflow.md")
 	existingContent := `---
 source: github/gh-aw/.github/workflows/target-workflow.md@v1
@@ -1573,7 +1573,7 @@ func TestFetchDispatchWorkflows_NoSourceConflict(t *testing.T) {
 	dir := t.TempDir()
 	workflowsDir := dir
 
-	// Pre-existing file with NO source field
+	// Preexisting file with NO source field
 	existingPath := filepath.Join(dir, "target-workflow.md")
 	require.NoError(t, os.WriteFile(existingPath, []byte("# No source field\n"), 0644))
 
@@ -1600,7 +1600,7 @@ safe-outputs:
 func TestFetchDispatchWorkflows_ForceOverwritesConflict(t *testing.T) {
 	dir := t.TempDir()
 
-	// Pre-existing file from a DIFFERENT source — would conflict without force
+	// Preexisting file from a DIFFERENT source — would conflict without force
 	existingPath := filepath.Join(dir, "target-workflow.md")
 	existingContent := `---
 source: otherorg/other-repo/.github/workflows/target-workflow.md@v1
@@ -1642,7 +1642,7 @@ safe-outputs:
 func TestFetchResources_MarkdownConflictDifferentSource(t *testing.T) {
 	dir := t.TempDir()
 
-	// Pre-existing markdown resource from a DIFFERENT source
+	// Preexisting markdown resource from a DIFFERENT source
 	existingPath := filepath.Join(dir, "helper.md")
 	existingContent := `---
 source: otherorg/other-repo/.github/workflows/helper.md@v1
@@ -1672,7 +1672,7 @@ resources:
 func TestFetchResources_NonMarkdownConflict(t *testing.T) {
 	dir := t.TempDir()
 
-	// Pre-existing .yml resource (no source tracking)
+	// Preexisting .yml resource (no source tracking)
 	existingPath := filepath.Join(dir, "helper.yml")
 	require.NoError(t, os.WriteFile(existingPath, []byte("name: Helper\n"), 0644))
 
@@ -1697,7 +1697,7 @@ resources:
 func TestFetchResources_MarkdownSameSourceSkips(t *testing.T) {
 	dir := t.TempDir()
 
-	// Pre-existing markdown resource from the SAME source
+	// Preexisting markdown resource from the SAME source
 	existingPath := filepath.Join(dir, "helper.md")
 	existingContent := `---
 source: github/gh-aw/.github/workflows/helper.md@main
@@ -1748,7 +1748,7 @@ safe-outputs:
 `
 	require.NoError(t, os.WriteFile(mainPath, []byte(mainContent), 0644))
 
-	// Pre-existing triage-issue.md from a DIFFERENT source
+	// Preexisting triage-issue.md from a DIFFERENT source
 	conflictPath := filepath.Join(workflowsDir, "triage-issue.md")
 	conflictContent := `---
 source: otherorg/other-repo/.github/workflows/triage-issue.md@v1
@@ -1852,7 +1852,7 @@ engine: copilot
 func TestFetchAllRemoteDependencies_DispatchConflictPropagated(t *testing.T) {
 	tmpDir := t.TempDir()
 
-	// Pre-existing dispatch workflow from a DIFFERENT source repo.
+	// Preexisting dispatch workflow from a DIFFERENT source repo.
 	conflictPath := filepath.Join(tmpDir, "triage-issue.md")
 	conflictContent := `---
 source: otherorg/other-repo/.github/workflows/triage-issue.md@v1

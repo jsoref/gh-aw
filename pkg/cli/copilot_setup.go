@@ -303,7 +303,7 @@ var setupCliUsesPattern = regexp.MustCompile(
 // follows any setup-cli uses: line (any ref format: version tag, SHA-pinned, or quoted).
 // It is anchored to the same action repos as setupCliUsesPattern so that it only updates
 // the version belonging to the setup-cli step, but is independent of the exact ref value.
-// This allows it to correct pre-existing drift where the uses: comment and with: version:
+// This allows it to correct preexisting drift where the uses: comment and with: version:
 // were already out of sync before the upgrade was run.
 //
 // Pattern breakdown:
@@ -352,7 +352,7 @@ func upgradeSetupCliVersionInContent(content []byte, actionMode workflow.ActionM
 
 	// Replace the version: value in the with: block immediately following the
 	// setup-cli uses: line.  versionInWithPattern matches any valid setup-cli
-	// reference so it succeeds even when there was pre-existing drift between
+	// reference so it succeeds even when there was preexisting drift between
 	// the uses: comment and the version: parameter before the upgrade was run.
 	updated = versionInWithPattern.ReplaceAll(updated, []byte("${1}"+version+"${3}"))
 

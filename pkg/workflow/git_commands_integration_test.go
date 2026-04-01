@@ -121,12 +121,12 @@ This is a test workflow that should automatically get additional Claude tools wh
 		}
 	}
 
-	// Verify that pre-existing tools are still there
+	// Verify that preexisting tools are still there
 	if !strings.Contains(allowedToolsStr, "Read") {
-		t.Error("Expected pre-existing Read tool to be preserved")
+		t.Error("Expected preexisting Read tool to be preserved")
 	}
 	if !strings.Contains(allowedToolsStr, "Task") {
-		t.Error("Expected pre-existing Task tool to be preserved")
+		t.Error("Expected preexisting Task tool to be preserved")
 	}
 
 	// Verify Git commands are also present (since create-pull-request is enabled)
@@ -169,9 +169,9 @@ This is a test workflow that should automatically get additional Claude tools wh
 		}
 	}
 
-	// Verify that pre-existing tools are still there
+	// Verify that preexisting tools are still there
 	if !strings.Contains(allowedToolsStr, "Read") {
-		t.Error("Expected pre-existing Read tool to be preserved")
+		t.Error("Expected preexisting Read tool to be preserved")
 	}
 
 	// Verify Git commands are also present (since push-to-pull-request-branch is enabled)
