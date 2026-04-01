@@ -464,7 +464,7 @@ describe("safe_outputs_handlers", () => {
         branch: "feature-branch",
         title: "Test PR",
         body: "Test description",
-        repo: "owner/non-existent-repo",
+        repo: "owner/nonexistent-repo",
       };
 
       const result = await handlers.createPullRequestHandler(args);
@@ -473,7 +473,7 @@ describe("safe_outputs_handlers", () => {
       const responseData = JSON.parse(result.content[0].text);
       expect(responseData.result).toBe("error");
       expect(responseData.error).toContain("not in the allowed-repos list");
-      expect(responseData.error).toContain("owner/non-existent-repo");
+      expect(responseData.error).toContain("owner/nonexistent-repo");
     });
 
     it("should treat empty repo string as workspace root", async () => {

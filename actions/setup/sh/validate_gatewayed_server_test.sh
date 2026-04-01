@@ -80,9 +80,9 @@ test_config_not_found() {
   local nonexistent_config="$tmpdir/nonexistent.json"
   
   if ! bash "$SCRIPT_PATH" "github" "$nonexistent_config" "http://localhost:8080" 2>/dev/null; then
-    print_result "Script rejects non-existent config file" "PASS"
+    print_result "Script rejects nonexistent config file" "PASS"
   else
-    print_result "Script should reject non-existent config file" "FAIL"
+    print_result "Script should reject nonexistent config file" "FAIL"
   fi
   
   rm -rf "$tmpdir"

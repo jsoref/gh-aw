@@ -762,7 +762,7 @@ describe("updateProject", () => {
       project: projectUrl,
       content_type: "draft_issue",
       draft_issue_id: "aw_27a9a9",
-      draft_title: "Non-existent Draft",
+      draft_title: "Nonexistent Draft",
     };
 
     queueResponses([
@@ -1425,7 +1425,7 @@ describe("updateProject", () => {
     expect(updateCall[1].value).toEqual({ iterationId: "iter-42" });
   });
 
-  it("handles ITERATION field with non-existent iteration with warning", async () => {
+  it("handles ITERATION field with nonexistent iteration with warning", async () => {
     const projectUrl = "https://github.com/orgs/testowner/projects/60";
     const output = {
       type: "update_project",

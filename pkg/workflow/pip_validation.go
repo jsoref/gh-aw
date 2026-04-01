@@ -6,7 +6,7 @@
 //
 // This file validates Python package availability on PyPI using pip and uv package managers.
 // Validation ensures that Python packages specified in workflows exist and can be installed
-// at runtime, preventing failures due to typos or non-existent packages.
+// at runtime, preventing failures due to typos or nonexistent packages.
 //
 // # Validation Functions
 //

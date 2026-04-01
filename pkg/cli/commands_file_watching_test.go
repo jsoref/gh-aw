@@ -436,7 +436,7 @@ func TestCompileSingleFile(t *testing.T) {
 		workflowsDir := filepath.Join(tempDir, ".github/workflows")
 		os.MkdirAll(workflowsDir, 0755)
 
-		// Use a non-existent file path
+		// Use a nonexistent file path
 		filePath := filepath.Join(workflowsDir, "nonexistent.md")
 
 		compiler := workflow.NewCompiler()
@@ -446,7 +446,7 @@ func TestCompileSingleFile(t *testing.T) {
 		result := compileSingleFile(compiler, filePath, stats, false, true)
 
 		if result {
-			t.Error("Expected compilation to be skipped for non-existent file")
+			t.Error("Expected compilation to be skipped for nonexistent file")
 		}
 
 		if stats.Total != 0 {

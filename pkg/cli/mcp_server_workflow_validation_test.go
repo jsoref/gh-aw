@@ -21,7 +21,7 @@ func TestMCPValidateWorkflowName(t *testing.T) {
 			shouldSucceed: true,
 		},
 		{
-			name:          "non-existent workflow returns error",
+			name:          "nonexistent workflow returns error",
 			workflowName:  "nonexistent-workflow-xyz-12345",
 			shouldSucceed: false,
 			errorContains: "workflow 'nonexistent-workflow-xyz-12345' not found",

@@ -157,16 +157,16 @@ func TestRefFlagSignature(t *testing.T) {
 
 // TestRunWorkflowOnGitHubWithRef tests that the ref parameter is handled correctly
 func TestRunWorkflowOnGitHubWithRef(t *testing.T) {
-	// Test with explicit ref override (should still fail for non-existent workflow, but syntax is valid)
+	// Test with explicit ref override (should still fail for nonexistent workflow, but syntax is valid)
 	err := RunWorkflowOnGitHub(context.Background(), "nonexistent-workflow", RunOptions{RefOverride: "main"})
 	if err == nil {
-		t.Error("RunWorkflowOnGitHub should return error for non-existent workflow even with ref flag")
+		t.Error("RunWorkflowOnGitHub should return error for nonexistent workflow even with ref flag")
 	}
 
 	// Test with ref override and repo override
 	err = RunWorkflowOnGitHub(context.Background(), "nonexistent-workflow", RunOptions{RepoOverride: "owner/repo", RefOverride: "feature-branch"})
 	if err == nil {
-		t.Error("RunWorkflowOnGitHub should return error for non-existent workflow with both ref and repo")
+		t.Error("RunWorkflowOnGitHub should return error for nonexistent workflow with both ref and repo")
 	}
 }
 

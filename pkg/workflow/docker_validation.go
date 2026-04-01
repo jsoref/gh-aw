@@ -6,7 +6,7 @@
 //
 // This file validates Docker container images used in MCP configurations.
 // Validation ensures that Docker images specified in workflows exist and are accessible,
-// preventing runtime failures due to typos or non-existent images.
+// preventing runtime failures due to typos or nonexistent images.
 //
 // # Validation Functions
 //

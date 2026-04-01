@@ -145,10 +145,10 @@ on: push
 	}
 }
 
-// TestExtractWorkflowDescriptionFromFile_NonExistentFile tests handling of non-existent files
+// TestExtractWorkflowDescriptionFromFile_NonExistentFile tests handling of nonexistent files
 func TestExtractWorkflowDescriptionFromFile_NonExistentFile(t *testing.T) {
 	result := ExtractWorkflowDescriptionFromFile("/path/that/does/not/exist.md")
 	if result != "" {
-		t.Errorf("ExtractWorkflowDescriptionFromFile() with non-existent file = %q, want empty string", result)
+		t.Errorf("ExtractWorkflowDescriptionFromFile() with nonexistent file = %q, want empty string", result)
 	}
 }

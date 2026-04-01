@@ -95,7 +95,7 @@ Test content
 		t.Run(tt.name, func(t *testing.T) {
 			err := tt.testFunc(tt.input)
 			if err == nil {
-				t.Errorf("Expected error for non-existent workflow, got nil")
+				t.Errorf("Expected error for nonexistent workflow, got nil")
 				return
 			}
 
@@ -169,7 +169,7 @@ Test content
 	// Test enable command with typo
 	err = EnableWorkflowsByNames([]string{"audti-workflows"}, "")
 	if err == nil {
-		t.Fatal("Expected error for non-existent workflow")
+		t.Fatal("Expected error for nonexistent workflow")
 	}
 
 	errorMsg := err.Error()
@@ -283,7 +283,7 @@ on:
 	// Try to resolve a workflow with a completely different name
 	_, err = ResolveWorkflowPath("completely-different-name")
 	if err == nil {
-		t.Fatal("Expected error for non-existent workflow")
+		t.Fatal("Expected error for nonexistent workflow")
 	}
 
 	errorMsg := err.Error()

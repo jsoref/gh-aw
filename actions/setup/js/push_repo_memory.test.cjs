@@ -1395,7 +1395,7 @@ describe("push_repo_memory.cjs - shell injection security tests", () => {
       //
       // Since vi.doMock cannot intercept CJS require() calls for git_helpers.cjs
       // in this test environment, we rely on real git (which will fail with an
-      // auth/network error for a non-existent repo/token) to exercise the path.
+      // auth/network error for a nonexistent repo/token) to exercise the path.
       const nodeFs = require("fs");
       const nodePath = require("path");
       const os = require("os");

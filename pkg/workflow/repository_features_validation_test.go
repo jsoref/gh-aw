@@ -199,12 +199,12 @@ func TestCheckRepositoryHasIssuesUncached(t *testing.T) {
 }
 
 func TestCheckRepositoryHasIssuesUncachedWithInvalidRepo(t *testing.T) {
-	// Test REST client error handling with non-existent repository
+	// Test REST client error handling with nonexistent repository
 	repo := "githubnext/this-repo-definitely-does-not-exist-12345"
 
 	_, err := checkRepositoryHasIssuesUncached(repo)
 	if err == nil {
-		t.Error("expected error for non-existent repository")
+		t.Error("expected error for nonexistent repository")
 	}
 
 	// The error should mention either "failed to query repository" or "failed to create REST client"

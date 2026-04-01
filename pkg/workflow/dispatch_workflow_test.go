@@ -188,7 +188,7 @@ func TestDispatchWorkflowNotFound(t *testing.T) {
 	err = os.MkdirAll(workflowsDir, 0755)
 	require.NoError(t, err, "Failed to create workflows directory")
 
-	// Create a dispatcher workflow that references a non-existent workflow
+	// Create a dispatcher workflow that references a nonexistent workflow
 	dispatcherWorkflow := `---
 on: issues
 engine: copilot
@@ -203,7 +203,7 @@ safe-outputs:
 
 # Dispatcher Workflow
 
-This workflow tries to dispatch to a non-existent workflow.
+This workflow tries to dispatch to a nonexistent workflow.
 `
 	dispatcherFile := filepath.Join(awDir, "dispatcher.md")
 	err = os.WriteFile(dispatcherFile, []byte(dispatcherWorkflow), 0644)
@@ -417,7 +417,7 @@ func TestDispatchWorkflowValidationWithoutAgenticWorkflowsTool(t *testing.T) {
 	require.NoError(t, err, "Failed to create workflows directory")
 
 	// Create a dispatcher workflow WITHOUT the agentic-workflows tool
-	// This workflow references a non-existent workflow
+	// This workflow references a nonexistent workflow
 	dispatcherWorkflow := `---
 on: issues
 engine: copilot
@@ -432,7 +432,7 @@ safe-outputs:
 
 # Dispatcher Workflow
 
-This workflow tries to dispatch to a non-existent workflow.
+This workflow tries to dispatch to a nonexistent workflow.
 No agentic-workflows tool is present.
 `
 	dispatcherFile := filepath.Join(awDir, "dispatcher.md")
@@ -450,7 +450,7 @@ No agentic-workflows tool is present.
 	err = compiler.CompileWorkflow(dispatcherFile)
 
 	// Check that compilation failed due to validation
-	require.Error(t, err, "Compilation should fail for non-existent workflow")
+	require.Error(t, err, "Compilation should fail for nonexistent workflow")
 	assert.Contains(t, err.Error(), "dispatch-workflow validation failed",
 		"Should fail with dispatch-workflow validation error")
 	assert.Contains(t, err.Error(), "not found",

@@ -216,7 +216,7 @@ func GetWorkflowLockFileName(input string) (string, error) {
 	}
 
 	// Strategy 2: Match by display name (case-insensitive) via GetAllWorkflows.
-	// This handles inputs like "Smoke Copilot" that normalize to non-existent filenames.
+	// This handles inputs like "Smoke Copilot" that normalize to nonexistent filenames.
 	workflows, err := GetAllWorkflows()
 	if err != nil {
 		return "", fmt.Errorf("failed to get workflows: %w", err)

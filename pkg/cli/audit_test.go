@@ -796,7 +796,7 @@ Cleaning up...
 			},
 		},
 		{
-			name:        "Extract non-existent step",
+			name:        "Extract nonexistent step",
 			stepNumber:  99,
 			expectError: true,
 			checkOutput: nil,

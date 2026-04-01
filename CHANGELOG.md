@@ -2471,7 +2471,7 @@ Enhances the `--validate` flag to perform additional validation checks beyond Gi
 - **npm packages**: Validates packages referenced with `npx` exist on the npm registry
 - **Python packages**: Validates packages referenced with `pip`, `pip3`, `uv`, or `uvx` exist on PyPI
 
-The validator provides early detection of non-existent Docker images, typos in package names, and missing dependencies during compilation, giving immediate feedback to workflow authors before runtime failures occur.
+The validator provides early detection of nonexistent Docker images, typos in package names, and missing dependencies during compilation, giving immediate feedback to workflow authors before runtime failures occur.
 
 #### Add secret validation steps to agentic engines (Claude, Copilot, Codex)
 

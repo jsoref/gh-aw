@@ -101,11 +101,11 @@ jobs:
 		})
 	}
 
-	// Test non-existent file
-	t.Run("non-existent file", func(t *testing.T) {
+	// Test nonexistent file
+	t.Run("nonexistent file", func(t *testing.T) {
 		result := ExtractStopTimeFromLockFile("/non/existent/file.lock.yml")
 		if result != "" {
-			t.Errorf("ExtractStopTimeFromLockFile() for non-existent file = %q, want empty string", result)
+			t.Errorf("ExtractStopTimeFromLockFile() for nonexistent file = %q, want empty string", result)
 		}
 	})
 }

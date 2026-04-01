@@ -94,7 +94,7 @@ func TestRenamePathForUpgrade_NonExistentFile(t *testing.T) {
 	exe := filepath.Join(dir, "nonexistent")
 
 	_, err := renamePathForUpgrade(exe)
-	assert.Error(t, err, "renamePathForUpgrade should fail for non-existent file")
+	assert.Error(t, err, "renamePathForUpgrade should fail for nonexistent file")
 }
 
 func TestRestoreExecutableBackup_NoNewBinary(t *testing.T) {

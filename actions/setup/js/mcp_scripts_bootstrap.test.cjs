@@ -90,7 +90,7 @@ describe("mcp_scripts_bootstrap.cjs", () => {
       expect(result.tools[0].handler).toBeInstanceOf(Function);
     });
 
-    it("should throw error for non-existent config file", async () => {
+    it("should throw error for nonexistent config file", async () => {
       const { bootstrapMCPScriptsServer } = await import("./mcp_scripts_bootstrap.cjs");
 
       const logger = {
@@ -124,7 +124,7 @@ describe("mcp_scripts_bootstrap.cjs", () => {
       expect(logger.debug).toHaveBeenCalledWith(expect.stringContaining("Deleted configuration file"));
     });
 
-    it("should handle non-existent file gracefully", async () => {
+    it("should handle nonexistent file gracefully", async () => {
       const { cleanupConfigFile } = await import("./mcp_scripts_bootstrap.cjs");
 
       const logger = {

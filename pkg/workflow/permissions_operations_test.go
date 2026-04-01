@@ -201,7 +201,7 @@ func TestPermissionsGet(t *testing.T) {
 			wantExists: true,
 		},
 		{
-			name:        "non-existent permission",
+			name:        "nonexistent permission",
 			permissions: NewPermissions(),
 			scope:       PermissionContents,
 			wantLevel:   "",

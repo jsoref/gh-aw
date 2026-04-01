@@ -1975,7 +1975,7 @@ This section provides complete normative definitions for all safe output types. 
 1. **Atomicity**: Issue creation is atomic. Failure at any step prevents issue creation.
 2. **Temporary ID Resolution**: References to `#aw_<id>` in bodies replaced with actual numbers post-creation.
 3. **Parent Linking**: When `parent` specified, tasklist entry added to parent issue.
-4. **Label Validation**: Labels must exist in repository; non-existent labels cause failure.
+4. **Label Validation**: Labels must exist in repository; nonexistent labels cause failure.
 5. **Cross-Repository**: When `target-repo` configured, created in that repository (must be in `allowed-repos`).
 
 **Configuration Parameters**:
@@ -2323,7 +2323,7 @@ This section provides complete definitions for all remaining safe output types. 
 
 1. **Partial Updates**: Only fields explicitly provided are modified; omitted fields are unchanged.
 2. **Body Operation Modes**: `replace` overwrites the entire body; `append`/`prepend` add content with separator; `replace-island` updates a run-specific section.
-3. **Label Validation**: Provided labels must exist in the repository; non-existent labels cause failure.
+3. **Label Validation**: Provided labels must exist in the repository; nonexistent labels cause failure.
 4. **Assignee Resolution**: Assignees must have repository access; invalid usernames cause failure.
 5. **Cross-Repository**: When `target-repo` is configured, operates on that repository (must be in `allowed-repos`).
 
@@ -2949,7 +2949,7 @@ This section provides complete definitions for all remaining safe output types. 
 **Notes**:
 
 - Requires both `issues: write` and `pull-requests: write` to support labeling both entity types
-- Labels must exist in repository; non-existent labels generate warnings
+- Labels must exist in repository; nonexistent labels generate warnings
 
 ---
 

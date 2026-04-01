@@ -354,7 +354,7 @@ safe-outputs:
 			description:  "Error after array property",
 		},
 		{
-			name: "non-existent path",
+			name: "nonexistent path",
 			yamlContent: `on: daily
 safe-outputs:
   create-issue:

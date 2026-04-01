@@ -346,7 +346,7 @@ describe("create_discussion category normalization", () => {
     expect(createMutationCall[1].categoryId).toBe("DIC_kwDOGFsHUM4BsUn4"); // Announcements
   });
 
-  it("should prefer Announcements category when non-existent category specified", async () => {
+  it("should prefer Announcements category when nonexistent category specified", async () => {
     // Mock categories with Announcements available
     mockGithub.graphql = vi.fn().mockImplementation((query, variables) => {
       if (query.includes("discussionCategories")) {

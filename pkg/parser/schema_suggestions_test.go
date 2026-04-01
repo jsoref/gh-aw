@@ -157,7 +157,7 @@ func TestExtractAcceptedFieldsFromSchema(t *testing.T) {
 			want:     []string{"contents", "issues"}, // sorted
 		},
 		{
-			name:     "non-existent path",
+			name:     "nonexistent path",
 			jsonPath: "/nonexistent",
 			want:     nil,
 		},
@@ -900,7 +900,7 @@ func TestExtractSchemaExamples(t *testing.T) {
 			want:     nil,
 		},
 		{
-			name:     "non-existent path",
+			name:     "nonexistent path",
 			jsonPath: "/does-not-exist",
 			want:     nil,
 		},

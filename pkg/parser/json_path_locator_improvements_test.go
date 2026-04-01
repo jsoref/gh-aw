@@ -260,7 +260,7 @@ nested:
 			shouldFind:   true,
 		},
 		{
-			name:         "non-existent path with additional properties",
+			name:         "nonexistent path with additional properties",
 			jsonPath:     "/nonexistent",
 			errorMessage: "at '/nonexistent': additional properties 'some_prop' not allowed",
 			expectedLine: 1, // Falls back to global search, which won't find 'some_prop'

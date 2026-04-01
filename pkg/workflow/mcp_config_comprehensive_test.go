@@ -27,7 +27,7 @@ func TestMapToolConfigGetString(t *testing.T) {
 			wantExists: true,
 		},
 		{
-			name: "non-existent key",
+			name: "nonexistent key",
 			config: MapToolConfig{
 				"command": "docker",
 			},
@@ -139,7 +139,7 @@ func TestMapToolConfigGetStringArray(t *testing.T) {
 			wantExists: true,
 		},
 		{
-			name: "non-existent key",
+			name: "nonexistent key",
 			config: MapToolConfig{
 				"args": []string{"test"},
 			},
@@ -274,7 +274,7 @@ func TestMapToolConfigGetStringMap(t *testing.T) {
 			wantExists: true,
 		},
 		{
-			name: "non-existent key",
+			name: "nonexistent key",
 			config: MapToolConfig{
 				"env": map[string]string{"KEY": "value"},
 			},

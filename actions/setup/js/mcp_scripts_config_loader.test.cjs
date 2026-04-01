@@ -45,7 +45,7 @@ describe("mcp_scripts_config_loader.cjs", () => {
       expect(loadedConfig.tools[0].name).toBe("test_tool");
     });
 
-    it("should throw error for non-existent file", async () => {
+    it("should throw error for nonexistent file", async () => {
       const { loadConfig } = await import("./mcp_scripts_config_loader.cjs");
 
       expect(() => loadConfig("/non/existent/config.json")).toThrow("Configuration file not found");

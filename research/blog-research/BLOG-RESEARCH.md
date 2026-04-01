@@ -871,7 +871,7 @@ CI Optimization Coach has contributed **9 merged PRs out of 9 proposed (100% mer
 **Statistics (Attribution-Verified)**: **5 merged / 13 direct PRs (38% merge rate)** | **40 issues created** | **Causal chain: 25 issues → 34 PRs (14 merged)**
 
 **Example PRs** (Recent, Merged, Attribution-Verified):
-- [#9902: Fix CI Doctor workflow monitoring non-existent workflows](https://github.com/github/gh-aw/pull/9902)
+- [#9902: Fix CI Doctor workflow monitoring nonexistent workflows](https://github.com/github/gh-aw/pull/9902)
 - [#9903: Fix MCP Gateway v0.0.47+ schema validation in metrics-collector workflow](https://github.com/github/gh-aw/pull/9903)
 - [#7866: Recompile 11 workflows with outdated lock files](https://github.com/github/gh-aw/pull/7866)
 

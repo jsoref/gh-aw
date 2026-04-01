@@ -611,11 +611,11 @@ func TestExtractEngineFromAwInfoNestedDirectory(t *testing.T) {
 		t.Errorf("Expected engine ID 'codex', got '%s'", engine.GetID())
 	}
 
-	// Test Case 3: Non-existent aw_info.json should return nil
+	// Test Case 3: Nonexistent aw_info.json should return nil
 	nonExistentPath := filepath.Join(tmpDir, "nonexistent", "aw_info.json")
 	engine = extractEngineFromAwInfo(nonExistentPath, false)
 	if engine != nil {
-		t.Errorf("Expected nil for non-existent aw_info.json, got engine: %s", engine.GetID())
+		t.Errorf("Expected nil for nonexistent aw_info.json, got engine: %s", engine.GetID())
 	}
 
 	// Test Case 4: Directory without nested aw_info.json should return nil

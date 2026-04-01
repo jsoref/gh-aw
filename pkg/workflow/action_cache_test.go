@@ -81,10 +81,10 @@ func TestActionCacheLoadNonExistent(t *testing.T) {
 
 	cache := NewActionCache(tmpDir)
 
-	// Try to load non-existent cache - should not error
+	// Try to load nonexistent cache - should not error
 	err := cache.Load()
 	if err != nil {
-		t.Errorf("Loading non-existent cache should not error, got: %v", err)
+		t.Errorf("Loading nonexistent cache should not error, got: %v", err)
 	}
 
 	// Cache should be empty

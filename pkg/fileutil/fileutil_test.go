@@ -198,7 +198,7 @@ func TestFileExists(t *testing.T) {
 			expected: true,
 		},
 		{
-			name:     "non-existent path returns false",
+			name:     "nonexistent path returns false",
 			path:     filepath.Join(dir, "does_not_exist.txt"),
 			expected: false,
 		},
@@ -235,7 +235,7 @@ func TestDirExists(t *testing.T) {
 			expected: true,
 		},
 		{
-			name:     "non-existent path returns false",
+			name:     "nonexistent path returns false",
 			path:     filepath.Join(dir, "does_not_exist"),
 			expected: false,
 		},

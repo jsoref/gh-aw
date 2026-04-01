@@ -534,7 +534,7 @@ process.stdin.on('end', () => {
       expect(result).toBe(tools); // Should return the same array
     });
 
-    it("should handle non-existent handler file", async () => {
+    it("should handle nonexistent handler file", async () => {
       const { loadToolHandlers } = await import("./mcp_server_core.cjs");
 
       const tools = [

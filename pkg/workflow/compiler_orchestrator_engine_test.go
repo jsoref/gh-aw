@@ -448,7 +448,7 @@ network:
 func TestSetupEngineAndImports_ImportProcessingError(t *testing.T) {
 	tmpDir := testutil.TempDir(t, "engine-import-error")
 
-	// Reference a non-existent import file
+	// Reference a nonexistent import file
 	testContent := `---
 on: push
 engine: copilot

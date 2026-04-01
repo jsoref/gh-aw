@@ -610,7 +610,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Label names to remove (e.g., ['smoke', 'needs-triage']). Non-existent labels are silently skipped."
+                    "description": "Label names to remove (e.g., ['smoke', 'needs-triage']). Nonexistent labels are silently skipped."
                 },
                 "item_number": {
                     "type": "number",

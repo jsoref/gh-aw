@@ -21,7 +21,7 @@ func TestActionsBuildCommand_NoActionsDir(t *testing.T) {
 	err = os.Chdir(tmpDir)
 	require.NoError(t, err, "Failed to change to temp directory")
 
-	// Test with non-existent actions directory
+	// Test with nonexistent actions directory
 	err = ActionsBuildCommand()
 	require.Error(t, err, "Should error when actions/ directory does not exist")
 	assert.Contains(t, err.Error(), "actions/ directory does not exist", "Error should mention missing directory")
@@ -37,7 +37,7 @@ func TestActionsValidateCommand_NoActionsDir(t *testing.T) {
 	err = os.Chdir(tmpDir)
 	require.NoError(t, err, "Failed to change to temp directory")
 
-	// Test with non-existent actions directory
+	// Test with nonexistent actions directory
 	err = ActionsValidateCommand()
 	assert.Error(t, err, "Should error when actions/ directory does not exist")
 }
@@ -52,7 +52,7 @@ func TestActionsCleanCommand_NoActionsDir(t *testing.T) {
 	err = os.Chdir(tmpDir)
 	require.NoError(t, err, "Failed to change to temp directory")
 
-	// Test with non-existent actions directory
+	// Test with nonexistent actions directory
 	err = ActionsCleanCommand()
 	assert.Error(t, err, "Should error when actions/ directory does not exist")
 }

@@ -134,13 +134,13 @@ func TestResolveWorkflowName(t *testing.T) {
 			expectError:          false,
 		},
 		{
-			name:          "non-existent workflow ID",
-			workflowInput: "non-existent",
+			name:          "nonexistent workflow ID",
+			workflowInput: "nonexistent",
 			expectError:   true,
 		},
 		{
-			name:          "non-existent workflow ID with extension",
-			workflowInput: "non-existent.md",
+			name:          "nonexistent workflow ID with extension",
+			workflowInput: "nonexistent.md",
 			expectError:   true,
 		},
 	}
@@ -519,8 +519,8 @@ func TestFindWorkflowName(t *testing.T) {
 			expectError:  false,
 		},
 		{
-			name:        "non-existent workflow",
-			input:       "non-existent-workflow",
+			name:        "nonexistent workflow",
+			input:       "nonexistent-workflow",
 			expectError: true,
 		},
 		{
@@ -671,8 +671,8 @@ func TestGetWorkflowLockFileName(t *testing.T) {
 			expectedFile: "smoke-copilot.lock.yml",
 		},
 		{
-			name:        "non-existent workflow",
-			input:       "non-existent",
+			name:        "nonexistent workflow",
+			input:       "nonexistent",
 			expectError: true,
 		},
 		{

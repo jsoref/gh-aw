@@ -98,7 +98,7 @@ jobs:
 	}
 }
 
-// TestCollectImagesFromLockFiles_MissingDir verifies that a non-existent workflow
+// TestCollectImagesFromLockFiles_MissingDir verifies that a nonexistent workflow
 // directory returns nil without error.
 func TestCollectImagesFromLockFiles_MissingDir(t *testing.T) {
 	images, err := collectImagesFromLockFiles("/nonexistent/path/to/workflows")

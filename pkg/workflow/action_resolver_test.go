@@ -73,7 +73,7 @@ func TestActionResolverFailedResolutionCache(t *testing.T) {
 	cache := NewActionCache(tmpDir)
 	resolver := NewActionResolver(cache)
 
-	// Attempt to resolve a non-existent action
+	// Attempt to resolve a nonexistent action
 	// This will fail since we don't have a valid GitHub API connection in tests
 	repo := "nonexistent/action"
 	version := "v999.999.999"
@@ -81,7 +81,7 @@ func TestActionResolverFailedResolutionCache(t *testing.T) {
 	// First attempt should try to resolve
 	_, err1 := resolver.ResolveSHA(repo, version)
 	if err1 == nil {
-		t.Error("Expected error for non-existent action on first attempt")
+		t.Error("Expected error for nonexistent action on first attempt")
 	}
 
 	// Verify the failed resolution was tracked
@@ -93,7 +93,7 @@ func TestActionResolverFailedResolutionCache(t *testing.T) {
 	// Second attempt should be skipped and return error immediately
 	_, err2 := resolver.ResolveSHA(repo, version)
 	if err2 == nil {
-		t.Error("Expected error for non-existent action on second attempt")
+		t.Error("Expected error for nonexistent action on second attempt")
 	}
 
 	// Verify the error message indicates it was skipped

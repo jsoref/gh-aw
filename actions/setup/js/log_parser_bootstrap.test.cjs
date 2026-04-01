@@ -33,7 +33,7 @@ describe("log_parser_bootstrap.cjs", () => {
         const mockParseLog = vi.fn();
         (runLogParser({ parseLog: mockParseLog, parserName: "TestParser" }), expect(mockCore.info).toHaveBeenCalledWith("No agent log file specified"), expect(mockParseLog).not.toHaveBeenCalled());
       }),
-        it("should handle non-existent log file", () => {
+        it("should handle nonexistent log file", () => {
           process.env.GH_AW_AGENT_OUTPUT = "/non/existent/file.log";
           const mockParseLog = vi.fn();
           (runLogParser({ parseLog: mockParseLog, parserName: "TestParser" }), expect(mockCore.info).toHaveBeenCalledWith("Log path not found: /non/existent/file.log"), expect(mockParseLog).not.toHaveBeenCalled());

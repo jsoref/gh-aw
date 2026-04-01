@@ -146,7 +146,7 @@ func TestLogsToolPassesGithubRepositoryAsRepoFlag(t *testing.T) {
 			var capturedArgs []string
 			mockExecCmd := func(ctx context.Context, args ...string) *exec.Cmd {
 				capturedArgs = append([]string(nil), args...)
-				// Use a non-existent command so the subprocess fails on all platforms
+				// Use a nonexistent command so the subprocess fails on all platforms
 				// without depending on Unix-specific commands like "false".
 				// cmd.Output() will return a "executable file not found" error, which
 				// the handler treats as a failure — we only care about the captured args.
@@ -217,7 +217,7 @@ func TestAuditToolPassesGithubRepositoryAsRepoFlag(t *testing.T) {
 			var capturedArgs []string
 			mockExecCmd := func(ctx context.Context, args ...string) *exec.Cmd {
 				capturedArgs = append([]string(nil), args...)
-				// Use a non-existent command so the subprocess fails on all platforms
+				// Use a nonexistent command so the subprocess fails on all platforms
 				// without depending on Unix-specific commands like "false".
 				return exec.CommandContext(ctx, "nonexistent-command-for-testing-only")
 			}

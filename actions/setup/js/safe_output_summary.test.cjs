@@ -549,7 +549,7 @@ describe("safe_output_summary", () => {
     });
 
     it("should handle missing safe outputs file gracefully", async () => {
-      // Set environment variable to a non-existent file
+      // Set environment variable to a nonexistent file
       const originalEnv = process.env.GH_AW_SAFE_OUTPUTS;
       process.env.GH_AW_SAFE_OUTPUTS = "/non/existent/file.jsonl";
 

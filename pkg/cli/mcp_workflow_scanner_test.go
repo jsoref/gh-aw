@@ -140,10 +140,10 @@ safe-outputs:
 		}
 	})
 
-	t.Run("scan non-existent directory", func(t *testing.T) {
+	t.Run("scan nonexistent directory", func(t *testing.T) {
 		_, err := ScanWorkflowsForMCP("/nonexistent/directory", "", false)
 		if err == nil {
-			t.Error("Expected error for non-existent directory, got nil")
+			t.Error("Expected error for nonexistent directory, got nil")
 		}
 	})
 

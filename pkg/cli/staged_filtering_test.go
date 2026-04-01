@@ -90,7 +90,7 @@ func TestParseAwInfo(t *testing.T) {
 	})
 
 	t.Run("missing file", func(t *testing.T) {
-		// Test with non-existent file
+		// Test with nonexistent file
 		nonExistentPath := filepath.Join(tmpDir, "nonexistent.json")
 		_, err := parseAwInfo(nonExistentPath, false)
 		if err == nil {

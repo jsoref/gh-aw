@@ -193,7 +193,7 @@ describe("safe_output_manifest", () => {
     });
 
     it("should throw when the file cannot be created", () => {
-      // Use a path under a non-existent directory without creating it
+      // Use a path under a nonexistent directory without creating it
       const badFile = "/tmp/nonexistent-dir-xyz/items.jsonl";
       expect(() => ensureManifestExists(badFile)).toThrow("Failed to create manifest file");
     });

@@ -21,7 +21,7 @@ func TestGenerateActionMetadataCommand_NoJsDir(t *testing.T) {
 	err = os.Chdir(tmpDir)
 	require.NoError(t, err, "Failed to change to temp directory")
 
-	// Test with non-existent js directory
+	// Test with nonexistent js directory
 	err = GenerateActionMetadataCommand()
 	assert.Error(t, err, "Should error when pkg/workflow/js/ directory does not exist")
 }

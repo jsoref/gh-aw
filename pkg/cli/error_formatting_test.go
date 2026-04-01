@@ -55,7 +55,7 @@ This is not valid frontmatter
 
 // TestResolveWorkflowErrorFormatting verifies that workflow resolution errors use console formatting
 func TestResolveWorkflowErrorFormatting(t *testing.T) {
-	// Test with non-existent workflow file
+	// Test with nonexistent workflow file
 	nonExistentFile := "/tmp/nonexistent-workflow-file-12345.md"
 
 	// Capture stderr
@@ -74,7 +74,7 @@ func TestResolveWorkflowErrorFormatting(t *testing.T) {
 	_, _ = io.Copy(&buf, r)
 
 	// Should return an error
-	require.Error(t, err, "Expected error for non-existent file")
+	require.Error(t, err, "Expected error for nonexistent file")
 
 	// Error message should contain helpful information
 	assert.Contains(t, err.Error(), "not found", "Error should mention file not found")

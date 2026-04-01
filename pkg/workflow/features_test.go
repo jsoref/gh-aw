@@ -260,8 +260,8 @@ func TestMergedFeaturesAreUsedByIsFeatureEnabled(t *testing.T) {
 			expected: true,
 		},
 		{
-			name:     "non-existent feature",
-			flag:     "non-existent",
+			name:     "nonexistent feature",
+			flag:     "nonexistent",
 			expected: false,
 		},
 	}

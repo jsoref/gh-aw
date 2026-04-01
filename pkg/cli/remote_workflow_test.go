@@ -81,7 +81,7 @@ func TestFetchLocalWorkflow_NonExistentFile(t *testing.T) {
 
 	result, err := fetchLocalWorkflow(spec, false)
 
-	require.Error(t, err, "should error for non-existent file")
+	require.Error(t, err, "should error for nonexistent file")
 	assert.Nil(t, result, "result should be nil on error")
 	assert.Contains(t, err.Error(), "not found", "error should mention file not found")
 }

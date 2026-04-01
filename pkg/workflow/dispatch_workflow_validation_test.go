@@ -67,7 +67,7 @@ func TestDispatchWorkflowErrorMessage_NotFound(t *testing.T) {
 	err = os.MkdirAll(workflowsDir, 0755)
 	require.NoError(t, err, "Failed to create workflows directory")
 
-	// Create a dispatcher workflow that references a non-existent workflow
+	// Create a dispatcher workflow that references a nonexistent workflow
 	dispatcherWorkflow := `---
 on: issues
 engine: copilot
@@ -82,7 +82,7 @@ safe-outputs:
 
 # Dispatcher Workflow
 
-This workflow references a non-existent workflow.
+This workflow references a nonexistent workflow.
 `
 	dispatcherFile := filepath.Join(awDir, "dispatcher.md")
 	err = os.WriteFile(dispatcherFile, []byte(dispatcherWorkflow), 0644)

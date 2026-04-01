@@ -36,7 +36,7 @@ describe("validateMemoryFiles", () => {
     expect(result.invalidFiles).toEqual([]);
   });
 
-  it("returns valid for non-existent directory", () => {
+  it("returns valid for nonexistent directory", () => {
     const nonExistentDir = path.join(tempDir, "does-not-exist");
     const result = validateMemoryFiles(nonExistentDir, "cache");
     expect(result.valid).toBe(true);

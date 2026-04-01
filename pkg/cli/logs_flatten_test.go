@@ -164,10 +164,10 @@ func TestFlattenSingleFileArtifacts(t *testing.T) {
 }
 
 func TestFlattenSingleFileArtifactsInvalidDirectory(t *testing.T) {
-	// Test with non-existent directory
+	// Test with nonexistent directory
 	err := flattenSingleFileArtifacts("/nonexistent/directory", false)
 	if err == nil {
-		t.Error("Expected error for non-existent directory, got nil")
+		t.Error("Expected error for nonexistent directory, got nil")
 	}
 }
 

@@ -362,7 +362,7 @@ describe("display_file_helpers", () => {
       }
     });
 
-    test("handles non-existent directory", () => {
+    test("handles nonexistent directory", () => {
       const mockCore = {
         info: vi.fn(),
         startGroup: vi.fn(),

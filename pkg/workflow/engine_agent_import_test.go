@@ -454,7 +454,7 @@ This is a test agent file.
 		}
 	})
 
-	// Test 2: Non-existent agent file
+	// Test 2: Nonexistent agent file
 	t.Run("nonexistent_agent_file", func(t *testing.T) {
 		compiler := NewCompiler()
 		workflowData := &WorkflowData{
@@ -467,7 +467,7 @@ This is a test agent file.
 		workflowPath := filepath.Join(workflowsDir, "test.md")
 		err := compiler.validateAgentFile(workflowData, workflowPath)
 		if err == nil {
-			t.Error("Expected error for non-existent agent file, got nil")
+			t.Error("Expected error for nonexistent agent file, got nil")
 		} else if !strings.Contains(err.Error(), "does not exist") {
 			t.Errorf("Expected 'does not exist' error, got: %v", err)
 		}

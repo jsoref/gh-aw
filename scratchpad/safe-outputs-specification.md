@@ -788,7 +788,7 @@ Implementations MUST:
 - Apply configured labels to all created resources
 - Filter agent-requested labels against `allowed-labels` if configured
 - Sanitize all labels according to Section 4.3.2
-- Handle non-existent labels gracefully (auto-create or skip based on GitHub API)
+- Handle nonexistent labels gracefully (auto-create or skip based on GitHub API)
 
 #### 6.2.6 Expiration
 

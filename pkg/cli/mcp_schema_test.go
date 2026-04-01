@@ -258,7 +258,7 @@ func TestAddSchemaDefault(t *testing.T) {
 		}
 	})
 
-	t.Run("handles non-existent property gracefully", func(t *testing.T) {
+	t.Run("handles nonexistent property gracefully", func(t *testing.T) {
 		type TestStruct struct {
 			Name string `json:"name" jsonschema:"Name field"`
 		}
@@ -268,9 +268,9 @@ func TestAddSchemaDefault(t *testing.T) {
 			t.Fatalf("GenerateSchema failed: %v", err)
 		}
 
-		// Try to add default to non-existent property - should not error
+		// Try to add default to nonexistent property - should not error
 		if err := AddSchemaDefault(schema, "nonexistent", "value"); err != nil {
-			t.Errorf("AddSchemaDefault should not error on non-existent property: %v", err)
+			t.Errorf("AddSchemaDefault should not error on nonexistent property: %v", err)
 		}
 	})
 

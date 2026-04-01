@@ -220,7 +220,7 @@ func TestTrackWorkflowFailure(t *testing.T) {
 func TestCompileWorkflowWithValidation_InvalidFile(t *testing.T) {
 	compiler := workflow.NewCompiler()
 
-	// Try to compile a non-existent file
+	// Try to compile a nonexistent file
 	err := CompileWorkflowWithValidation(
 		compiler,
 		"/nonexistent/file.md",
@@ -233,7 +233,7 @@ func TestCompileWorkflowWithValidation_InvalidFile(t *testing.T) {
 	)
 
 	if err == nil {
-		t.Error("Expected error when compiling non-existent file, got nil")
+		t.Error("Expected error when compiling nonexistent file, got nil")
 	}
 }
 

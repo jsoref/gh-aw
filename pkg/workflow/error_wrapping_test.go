@@ -65,7 +65,7 @@ on:
 		{
 			name: "workflow file read error",
 			operation: func() error {
-				// Try to compile a non-existent file
+				// Try to compile a nonexistent file
 				compiler := NewCompiler(WithVersion("1.0.0"))
 				err := compiler.CompileWorkflow("/nonexistent/file.md")
 				return err

@@ -95,7 +95,7 @@ func TestJobManager_ValidateDependencies(t *testing.T) {
 				{Name: "job2", RunsOn: "ubuntu-latest", Needs: []string{"nonexistent"}},
 			},
 			wantErr: true,
-			errMsg:  "depends on non-existent job 'nonexistent'",
+			errMsg:  "depends on nonexistent job 'nonexistent'",
 		},
 		{
 			name: "simple cycle",
@@ -364,7 +364,7 @@ func TestJobManager_GetJob(t *testing.T) {
 		t.Errorf("Retrieved job name = %s, want %s", retrievedJob.Name, testJob.Name)
 	}
 
-	// Test retrieving non-existent job
+	// Test retrieving nonexistent job
 	_, exists = jm.GetJob("nonexistent")
 	if exists {
 		t.Error("Expected job to not exist but it does")

@@ -107,7 +107,7 @@ This workflow has no GitHub MCP server.`
 	})
 
 	t.Run("mcp_server_not_found_in_any_workflow", func(t *testing.T) {
-		// Test searching for a non-existent MCP server
+		// Test searching for a nonexistent MCP server
 		err := ListToolsForMCP("", "nonexistent-server", false)
 		// This should not error, but should output warning about not finding the server
 		if err != nil {
@@ -125,7 +125,7 @@ This workflow has no GitHub MCP server.`
 	})
 
 	t.Run("nonexistent_workflow", func(t *testing.T) {
-		// Test with non-existent workflow file
+		// Test with nonexistent workflow file
 		err := ListToolsForMCP("nonexistent", "github", false)
 		if err == nil {
 			t.Error("Expected error for nonexistent workflow, got nil")

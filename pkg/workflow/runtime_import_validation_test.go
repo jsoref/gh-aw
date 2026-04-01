@@ -151,9 +151,9 @@ ${{ github.actor
 			errorText:   "secrets.MY_TOKEN",
 		},
 		{
-			name:        "non-existent file (should skip)",
+			name:        "nonexistent file (should skip)",
 			markdown:    "{{#runtime-import ./shared/nonexistent.md}}",
-			expectError: false, // Should skip validation for non-existent files
+			expectError: false, // Should skip validation for nonexistent files
 		},
 		{
 			name:        "URL import (should skip)",

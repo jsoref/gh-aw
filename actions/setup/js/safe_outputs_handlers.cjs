@@ -931,7 +931,7 @@ function createHandlers(server, appendSafeOutput, config = {}) {
    *
    * For path-based requests with an absolute path the handler also rewrites entry.path to
    * the staging-relative basename so that upload_artifact.cjs on the safe_outputs runner
-   * resolves the file from staging rather than trying the (non-existent) absolute path.
+   * resolves the file from staging rather than trying the (nonexistent) absolute path.
    *
    * Relative paths and filter-based requests are passed through unchanged because the
    * agent is expected to have placed those files in staging directly.

@@ -269,7 +269,7 @@ engine: copilot
 func TestParseFrontmatterSection_FileReadError(t *testing.T) {
 	compiler := NewCompiler()
 
-	// Try to read a non-existent file
+	// Try to read a nonexistent file
 	result, err := compiler.parseFrontmatterSection("/nonexistent/path/to/file.md")
 
 	require.Error(t, err, "Should error when file doesn't exist")

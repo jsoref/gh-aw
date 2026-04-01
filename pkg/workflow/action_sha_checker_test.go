@@ -188,10 +188,10 @@ jobs:
 }
 
 func TestExtractActionsFromLockFileInvalidFile(t *testing.T) {
-	// Try to extract from non-existent file
+	// Try to extract from nonexistent file
 	_, err := ExtractActionsFromLockFile("/nonexistent/file.yml")
 	if err == nil {
-		t.Error("Expected error when reading non-existent file, got nil")
+		t.Error("Expected error when reading nonexistent file, got nil")
 	}
 }
 

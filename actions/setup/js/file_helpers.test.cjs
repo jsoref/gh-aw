@@ -30,7 +30,7 @@ describe("listFilesRecursively", () => {
     }
   });
 
-  it("should return empty array for non-existent directory", () => {
+  it("should return empty array for nonexistent directory", () => {
     const result = listFilesRecursively("/non/existent/path");
     expect(result).toEqual([]);
   });

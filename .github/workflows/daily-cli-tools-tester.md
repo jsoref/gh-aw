@@ -191,7 +191,7 @@ done
 
 Test edge cases and error conditions:
 
-#### Edge Case A: Non-existent Workflow
+#### Edge Case A: Nonexistent Workflow
 ```
 Try to download logs for a workflow that doesn't exist (use "logs" with workflow-name: "nonexistent-workflow-xyz")
 ```
@@ -302,7 +302,7 @@ Test edge cases:
 
 #### Edge Case A: Invalid Run ID
 ```
-Try to audit with an invalid or non-existent run ID
+Try to audit with an invalid or nonexistent run ID
 ```
 
 **Expected**: Clear error message
@@ -451,7 +451,7 @@ Attempt to compile it
 
 #### Edge Case B: Invalid Tool Configuration
 ```
-Create a test workflow with non-existent tool
+Create a test workflow with nonexistent tool
 Attempt to compile it
 ```
 
@@ -459,7 +459,7 @@ Attempt to compile it
 
 #### Edge Case C: Missing Imports
 ```
-Create a test workflow that imports a non-existent file
+Create a test workflow that imports a nonexistent file
 Attempt to compile it  
 ```
 

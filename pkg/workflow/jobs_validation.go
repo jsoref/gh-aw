@@ -30,8 +30,8 @@ func (jm *JobManager) ValidateDependencies() error {
 	for jobName, job := range jm.jobs {
 		for _, dep := range job.Needs {
 			if _, exists := jm.jobs[dep]; !exists {
-				jobLog.Printf("Validation failed: job %s depends on non-existent job %s", jobName, dep)
-				return fmt.Errorf("job '%s' depends on non-existent job '%s'", jobName, dep)
+				jobLog.Printf("Validation failed: job %s depends on nonexistent job %s", jobName, dep)
+				return fmt.Errorf("job '%s' depends on nonexistent job '%s'", jobName, dep)
 			}
 		}
 	}

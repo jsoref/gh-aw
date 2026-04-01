@@ -240,7 +240,7 @@ func TestRunWorkflowOnGitHub(t *testing.T) {
 	// Test with nonexistent workflow (this will fail but gracefully)
 	err = RunWorkflowOnGitHub(context.Background(), "nonexistent-workflow", RunOptions{})
 	if err == nil {
-		t.Error("RunWorkflowOnGitHub should return error for non-existent workflow")
+		t.Error("RunWorkflowOnGitHub should return error for nonexistent workflow")
 	}
 }
 
@@ -260,13 +260,13 @@ func TestRunWorkflowsOnGitHub(t *testing.T) {
 	// Test with nonexistent workflows (this will fail but gracefully)
 	err = RunWorkflowsOnGitHub(context.Background(), []string{"nonexistent-workflow1", "nonexistent-workflow2"}, RunOptions{})
 	if err == nil {
-		t.Error("RunWorkflowsOnGitHub should return error for non-existent workflows")
+		t.Error("RunWorkflowsOnGitHub should return error for nonexistent workflows")
 	}
 
 	// Test with negative repeat seconds (should work as 0)
 	err = RunWorkflowsOnGitHub(context.Background(), []string{"nonexistent-workflow"}, RunOptions{RepeatCount: -1})
 	if err == nil {
-		t.Error("RunWorkflowsOnGitHub should return error for non-existent workflow regardless of repeat value")
+		t.Error("RunWorkflowsOnGitHub should return error for nonexistent workflow regardless of repeat value")
 	}
 }
 
@@ -972,7 +972,7 @@ func TestRunWorkflowOnGitHubWithEnable(t *testing.T) {
 	// Test with enable flag enabled (should not error for basic validation)
 	err := RunWorkflowOnGitHub(context.Background(), "nonexistent-workflow", RunOptions{Enable: true})
 	if err == nil {
-		t.Error("RunWorkflowOnGitHub should return error for non-existent workflow even with enable flag")
+		t.Error("RunWorkflowOnGitHub should return error for nonexistent workflow even with enable flag")
 	}
 
 	// Test with empty workflow name and enable flag
@@ -984,10 +984,10 @@ func TestRunWorkflowOnGitHubWithEnable(t *testing.T) {
 
 func TestGetWorkflowStatus(t *testing.T) {
 
-	// Test with non-existent workflow
+	// Test with nonexistent workflow
 	_, err := getWorkflowStatus("nonexistent-workflow", "", false)
 	if err == nil {
-		t.Error("getWorkflowStatus should return error for non-existent workflow")
+		t.Error("getWorkflowStatus should return error for nonexistent workflow")
 	}
 
 	// Test with empty workflow name

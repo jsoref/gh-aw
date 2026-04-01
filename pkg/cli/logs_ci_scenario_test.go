@@ -28,7 +28,7 @@ func TestLogsJSONOutputWithNoRuns(t *testing.T) {
 	os.Stdout = w
 
 	// Call DownloadWorkflowLogs with parameters that will result in no matching runs
-	// We use a non-existent workflow name to ensure no results
+	// We use a nonexistent workflow name to ensure no results
 	err := DownloadWorkflowLogs(
 		ctx,
 		"nonexistent-workflow-12345", // Workflow that doesn't exist

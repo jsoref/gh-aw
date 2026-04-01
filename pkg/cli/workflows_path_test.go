@@ -116,7 +116,7 @@ func TestReadWorkflowFilePathSeparators(t *testing.T) {
 	}
 }
 
-// TestReadWorkflowFileNonExistent tests error handling for non-existent files
+// TestReadWorkflowFileNonExistent tests error handling for nonexistent files
 func TestReadWorkflowFileNonExistent(t *testing.T) {
 	// Create a temporary directory structure
 	tempDir := testutil.TempDir(t, "test-*")
@@ -125,10 +125,10 @@ func TestReadWorkflowFileNonExistent(t *testing.T) {
 		t.Fatalf("Failed to create workflows directory: %v", err)
 	}
 
-	// Try to read a non-existent file
-	_, _, err := readWorkflowFile("non-existent.md", workflowsDir)
+	// Try to read a nonexistent file
+	_, _, err := readWorkflowFile("nonexistent.md", workflowsDir)
 	if err == nil {
-		t.Error("Expected error for non-existent file, got nil")
+		t.Error("Expected error for nonexistent file, got nil")
 	}
 }
 

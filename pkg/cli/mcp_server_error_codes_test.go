@@ -156,7 +156,7 @@ func TestMCPServer_ErrorCodes_InternalError(t *testing.T) {
 		params := &mcp.CallToolParams{
 			Name: "audit",
 			Arguments: map[string]any{
-				"run_id_or_url": "1", // Invalid / non-existent run ID
+				"run_id_or_url": "1", // Invalid / nonexistent run ID
 			},
 		}
 

@@ -82,7 +82,7 @@ func TestReferencesCustomJobOutputsAdditional(t *testing.T) {
 		expected   bool
 	}{
 		{
-			name:       "references non-existent job",
+			name:       "references nonexistent job",
 			condition:  "needs.job2.outputs.value",
 			customJobs: map[string]any{"job1": map[string]any{}},
 			expected:   false,
@@ -462,7 +462,7 @@ func TestGetReferencedCustomJobs(t *testing.T) {
 			expectedJobIDs: []string{},
 		},
 		{
-			name:           "references non-existent job",
+			name:           "references nonexistent job",
 			content:        "needs.unknown.outputs.value",
 			customJobs:     map[string]any{"job1": map[string]any{}},
 			expectedCount:  0,
@@ -1747,7 +1747,7 @@ Test content`
 	}
 }
 
-// TestJobWithInvalidDependency tests handling of jobs with non-existent dependencies
+// TestJobWithInvalidDependency tests handling of jobs with nonexistent dependencies
 func TestJobWithInvalidDependency(t *testing.T) {
 	tmpDir := testutil.TempDir(t, "invalid-dep-test")
 
@@ -1780,7 +1780,7 @@ Test content`
 	// Should fail with validation error
 	err := compiler.CompileWorkflow(testFile)
 	if err == nil {
-		t.Fatal("Expected CompileWorkflow() to return error for non-existent job dependency")
+		t.Fatal("Expected CompileWorkflow() to return error for nonexistent job dependency")
 	}
 
 	// Verify error message mentions the invalid dependency

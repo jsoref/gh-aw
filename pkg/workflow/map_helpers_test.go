@@ -191,7 +191,7 @@ func TestExcludeMapKeys(t *testing.T) {
 			},
 		},
 		{
-			name: "filter non-existent key",
+			name: "filter nonexistent key",
 			original: map[string]any{
 				"key1": "value1",
 				"key2": "value2",

@@ -126,7 +126,7 @@ func validateRuntimeImportFiles(markdownContent string, workspaceDir string) err
 
 		// Check if file exists; missing files (optional or not) are deferred to runtime
 		if _, err := os.Stat(absolutePath); os.IsNotExist(err) {
-			expressionValidationLog.Printf("Skipping validation for non-existent file: %s", filePath)
+			expressionValidationLog.Printf("Skipping validation for nonexistent file: %s", filePath)
 			continue
 		}
 

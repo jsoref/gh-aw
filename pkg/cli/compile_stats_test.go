@@ -271,10 +271,10 @@ jobs:
 func TestCollectWorkflowStats_NonExistentFile(t *testing.T) {
 	stats, err := collectWorkflowStats("/nonexistent/file.lock.yml")
 	if err == nil {
-		t.Error("Expected error for non-existent file, got nil")
+		t.Error("Expected error for nonexistent file, got nil")
 	}
 	if stats != nil {
-		t.Error("Expected nil stats for non-existent file")
+		t.Error("Expected nil stats for nonexistent file")
 	}
 }
 

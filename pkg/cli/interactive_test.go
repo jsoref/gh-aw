@@ -495,7 +495,7 @@ func TestInteractiveWorkflowBuilder_compileWorkflow_SpinnerIntegration(t *testin
 
 	// We expect an error since the workflow doesn't exist
 	if err == nil {
-		t.Error("Expected error when compiling non-existent workflow")
+		t.Error("Expected error when compiling nonexistent workflow")
 	}
 
 	// Verify error handling doesn't panic

@@ -948,7 +948,7 @@ func TestIsLocalFileForUpdate_PathTraversal(t *testing.T) {
 
 	// A normal path within tmpDir that doesn't exist should return false
 	if isLocalFileForUpdate(tmpDir, "nonexistent.md") {
-		t.Errorf("isLocalFileForUpdate should return false for non-existent file")
+		t.Errorf("isLocalFileForUpdate should return false for nonexistent file")
 	}
 
 	// A normal path within tmpDir that DOES exist should return true

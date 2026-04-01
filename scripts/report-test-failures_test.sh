@@ -102,16 +102,16 @@ else
 fi
 echo ""
 
-# Test 5: Non-existent file
-echo "Test 5: Non-existent file handling"
+# Test 5: Nonexistent file
+echo "Test 5: Nonexistent file handling"
 if "$REPORT_SCRIPT" "$TEST_DIR/nonexistent.json" > /tmp/test5-output.txt 2>&1; then
   echo "❌ FAIL: Should exit 1 when no valid files"
   exit 1
 else
   if grep -q "ERROR: No valid test result files found" /tmp/test5-output.txt; then
-    echo "✅ PASS: Correctly handled non-existent file"
+    echo "✅ PASS: Correctly handled nonexistent file"
   else
-    echo "❌ FAIL: Wrong error message for non-existent file"
+    echo "❌ FAIL: Wrong error message for nonexistent file"
     cat /tmp/test5-output.txt
     exit 1
   fi

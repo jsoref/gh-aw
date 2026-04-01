@@ -102,7 +102,7 @@ func TestParseRedactedDomainsLog(t *testing.T) {
 func TestParseRedactedDomainsLog_FileNotFound(t *testing.T) {
 	_, err := parseRedactedDomainsLog("/nonexistent/path/redacted-urls.log", false)
 	if err == nil {
-		t.Error("expected error for non-existent file, got nil")
+		t.Error("expected error for nonexistent file, got nil")
 	}
 }
 

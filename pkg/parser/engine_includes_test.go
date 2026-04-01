@@ -212,7 +212,7 @@ func TestExpandIncludesForEnginesOptionalMissing(t *testing.T) {
 	// Create temporary directory for test files
 	tmpDir := testutil.TempDir(t, "test-*")
 
-	// Create main markdown content with optional include directive to non-existent file
+	// Create main markdown content with optional include directive to nonexistent file
 	mainContent := `# Main Workflow
 
 @include? missing-file.md

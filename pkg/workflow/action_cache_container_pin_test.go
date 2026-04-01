@@ -39,8 +39,8 @@ func TestContainerPinCRUD(t *testing.T) {
 	_, ok = cache.GetContainerPin("node:lts-alpine")
 	assert.False(t, ok, "pin should be gone after Delete")
 
-	// Deleting a non-existent pin is a no-op.
-	assert.NotPanics(t, func() { cache.DeleteContainerPin("nonexistent:latest") }, "delete non-existent should not panic")
+	// Deleting a nonexistent pin is a no-op.
+	assert.NotPanics(t, func() { cache.DeleteContainerPin("nonexistent:latest") }, "delete nonexistent should not panic")
 }
 
 // TestContainerPinSaveLoad verifies that container pins survive a JSON round-trip.

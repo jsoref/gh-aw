@@ -93,9 +93,9 @@ test_config_not_found() {
   
   # Test without config file
   if ! MCP_GATEWAY_PORT="8080" MCP_GATEWAY_DOMAIN="localhost" MCP_GATEWAY_API_KEY="test-key" MCP_GATEWAY_DOCKER_COMMAND="docker run -i --rm --network host test-image" bash "$test_script" 2>/dev/null; then
-    print_result "Script rejects non-existent config file" "PASS"
+    print_result "Script rejects nonexistent config file" "PASS"
   else
-    print_result "Script should reject non-existent config file" "FAIL"
+    print_result "Script should reject nonexistent config file" "FAIL"
   fi
   
   rm -rf "$tmpdir"

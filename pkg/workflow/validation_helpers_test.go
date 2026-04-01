@@ -317,9 +317,9 @@ func TestDirExists(t *testing.T) {
 		assert.False(t, result, "empty path should return false")
 	})
 
-	t.Run("non-existent path returns false", func(t *testing.T) {
+	t.Run("nonexistent path returns false", func(t *testing.T) {
 		result := fileutil.DirExists("/nonexistent/path/to/directory")
-		assert.False(t, result, "non-existent path should return false")
+		assert.False(t, result, "nonexistent path should return false")
 	})
 
 	t.Run("file path returns false", func(t *testing.T) {

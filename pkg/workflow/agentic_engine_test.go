@@ -38,10 +38,10 @@ func TestEngineRegistry(t *testing.T) {
 		t.Errorf("Expected codex engine ID, got '%s'", codexEngine.GetID())
 	}
 
-	// Test getting non-existent engine
+	// Test getting nonexistent engine
 	_, err = registry.GetEngine("nonexistent")
 	if err == nil {
-		t.Error("Expected error when getting non-existent engine")
+		t.Error("Expected error when getting nonexistent engine")
 	}
 
 	// Test IsValidEngine
