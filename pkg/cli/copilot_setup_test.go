@@ -358,7 +358,7 @@ func TestCopilotWorkflowStepStructure(t *testing.T) {
 			},
 		},
 		{
-			name: "step with with parameters",
+			name: "step with parameters",
 			step: CopilotWorkflowStep{
 				Name: "Setup",
 				Uses: "actions/setup-go@v6",
