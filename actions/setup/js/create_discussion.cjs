@@ -233,7 +233,7 @@ function isPermissionsError(errorMessage) {
 }
 
 /**
- * Handles fallback to create-issue when discussion creation fails
+ * Handles falling back to create-issue when discussion creation fails
  * @param {Function} createIssueHandler - The create_issue handler function
  * @param {Object} item - The original discussion message item
  * @param {string} qualifiedItemRepo - The qualified repository name (owner/repo)
@@ -267,7 +267,7 @@ async function handleFallbackToIssue(createIssueHandler, item, qualifiedItemRepo
       core.error(`Fallback to create-issue also failed: ${issueResult.error}`);
       return {
         success: false,
-        error: `${contextMessage} and fallback to issue also failed: ${issueResult.error}`,
+        error: `${contextMessage} and falling back to issue also failed: ${issueResult.error}`,
       };
     }
   } catch (fallbackError) {
@@ -275,7 +275,7 @@ async function handleFallbackToIssue(createIssueHandler, item, qualifiedItemRepo
     core.error(`Fallback to create-issue failed: ${fallbackErrorMessage}`);
     return {
       success: false,
-      error: `${contextMessage} and fallback to issue threw an error: ${fallbackErrorMessage}`,
+      error: `${contextMessage} and falling back to issue threw an error: ${fallbackErrorMessage}`,
     };
   }
 }

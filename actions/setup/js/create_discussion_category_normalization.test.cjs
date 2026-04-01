@@ -271,7 +271,7 @@ describe("create_discussion category normalization", () => {
     expect(result.success).toBe(true);
     expect(result.number).toBe(42);
 
-    // Verify fallback to first category (General)
+    // Verify falling back to first category (General)
     const createMutationCall = mockGithub.graphql.mock.calls.find(call => call[0].includes("createDiscussion"));
     expect(createMutationCall).toBeDefined();
     expect(createMutationCall[1].categoryId).toBe("DIC_kwDOGFsHUM4BsUn1"); // General (first)

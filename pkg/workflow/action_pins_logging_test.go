@@ -61,7 +61,7 @@ func TestActionPinResolutionWithMismatchedVersions(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			// Create a WorkflowData without a resolver to force fallback to hardcoded pins
+			// Create a WorkflowData without a resolver to force falling back to hardcoded pins
 			data := &WorkflowData{
 				StrictMode:     false, // Non-strict mode allows version mismatch
 				ActionResolver: nil,   // No resolver to force hardcoded pin usage
