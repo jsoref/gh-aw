@@ -225,7 +225,7 @@ func BuildAWFArgs(config AWFCommandConfig) []string {
 
 	// Add allowed domains. When the value contains ${{ }} GitHub Actions expressions,
 	// shellEscapeArg (via shellJoinArgs) double-quotes it so the expression is preserved
-	// for GA evaluation. Otherwise it escapes or quotes only when needed (typically using
+	// for GA evaluation. Otherwise, it escapes or quotes only when needed (typically using
 	// single quotes for shell-special content), which safely handles wildcards like
 	// *.domain.com without shell glob expansion.
 	awfArgs = append(awfArgs, "--allow-domains", config.AllowedDomains)

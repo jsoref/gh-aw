@@ -1409,7 +1409,7 @@ When `private-repos` is set to `false`, the MCP Gateway MUST verify repository v
 3. Parse response: { "private": true | false }
 4. If private == true AND private-repos == false:
    DENY access with error message
-5. Otherwise continue with normal access control checks
+5. Otherwise, continue with normal access control checks
 ```
 
 #### 7.1.2 Visibility Detection Order

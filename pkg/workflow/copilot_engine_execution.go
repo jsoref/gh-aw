@@ -288,7 +288,7 @@ touch %s
 	}
 
 	// Use COPILOT_GITHUB_TOKEN: when the copilot-requests feature is enabled, use the GitHub
-	// Actions token directly (${{ github.token }}). Otherwise use the COPILOT_GITHUB_TOKEN secret.
+	// Actions token directly (${{ github.token }}). Otherwise, use the COPILOT_GITHUB_TOKEN secret.
 	// #nosec G101 -- These are NOT hardcoded credentials. They are GitHub Actions expression templates
 	// that the runtime replaces with actual values. The strings "${{ secrets.COPILOT_GITHUB_TOKEN }}"
 	// and "${{ github.token }}" are placeholders, not actual credentials.

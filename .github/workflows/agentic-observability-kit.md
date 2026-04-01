@@ -265,4 +265,4 @@ Only create an escalation issue when at least one workflow crossed the escalatio
 
 ### No-op
 
-If the repository has no recent runs or no report can be produced, call `noop` with a short explanation. Otherwise do not use `noop`.
+If the repository has no recent runs or no report can be produced, call `noop` with a short explanation. Otherwise, do not use `noop`.

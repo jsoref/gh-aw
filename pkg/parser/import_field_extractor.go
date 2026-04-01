@@ -506,7 +506,7 @@ func (acc *importAccumulator) toImportsResult(topologicalOrder []string) *Import
 //     "/root/.github/.github/workflows/file.md") resolve to the correct
 //     ".github/workflows/…" segment rather than the first occurrence.
 //  2. If fullPath already starts with ".github/" (a relative path) use it as-is.
-//  3. Otherwise fall back to importPath (the original import spec).
+//  3. Otherwise, fall back to importPath (the original import spec).
 func computeImportRelPath(fullPath, importPath string) string {
 	normalizedFullPath := filepath.ToSlash(fullPath)
 	if idx := strings.LastIndex(normalizedFullPath, "/.github/"); idx >= 0 {
