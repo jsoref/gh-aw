@@ -552,13 +552,13 @@ func TestBuildCrossRunAuditReport_MCPHealth(t *testing.T) {
 		}
 	}
 	require.NotNil(t, githubHealth, "Should find github server health")
-	assert.Equal(t, 2, githubHealth.RunsConnected, "Github should be connected in 2 runs")
+	assert.Equal(t, 2, githubHealth.RunsConnected, "GitHub should be connected in 2 runs")
 	assert.Equal(t, 2, githubHealth.TotalRuns, "Total runs should be 2")
 	assert.Equal(t, 18, githubHealth.TotalCalls, "Total calls should be 18")
 	assert.Equal(t, 2, githubHealth.TotalErrors, "Total errors should be 2")
 	assert.InDelta(t, 2.0/18.0, githubHealth.ErrorRate, 0.001, "Error rate should be 2/18")
 	// 2/18 = ~11.1% error rate, which is > mcpErrorRateThreshold (10%), so it IS unreliable
-	assert.True(t, githubHealth.Unreliable, "Github should be unreliable (error rate 11% > mcpErrorRateThreshold)")
+	assert.True(t, githubHealth.Unreliable, "GitHub should be unreliable (error rate 11% > mcpErrorRateThreshold)")
 
 	// Find safeoutputs server
 	var soHealth *MCPServerCrossRunHealth
