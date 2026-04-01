@@ -141,7 +141,7 @@ describe("determine_automatic_lockdown", () => {
     expect(mockCore.setOutput).toHaveBeenCalledWith("visibility", "internal");
   });
 
-  it("should handle API failure and default to safe guard policy", async () => {
+  it("should handle API failure and default to safeguard policy", async () => {
     const error = new Error("API request failed");
     mockGithub.rest.repos.get.mockRejectedValue(error);
 

@@ -105,7 +105,7 @@ async function determineAutomaticLockdown(github, context, core) {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     core.error(`Failed to determine automatic guard policy: ${errorMessage}`);
-    // Default to safe guard policy for public repos on error
+    // Default to safeguard policy for public repos on error
     core.setOutput("min_integrity", "approved");
     core.setOutput("repos", "all");
     core.setOutput("visibility", "unknown");
