@@ -254,7 +254,7 @@ describe("create_discussion category normalization", () => {
     expect(createMutationCall[1].categoryId).toBe("DIC_kwDOGFsHUM4BsUn2"); // Audits category
   });
 
-  it("should fallback to first category when no match found", async () => {
+  it("should fall back to first category when no match found", async () => {
     const handler = await createDiscussionMain({
       max: 5,
       category: "NonExistentCategory",

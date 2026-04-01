@@ -116,7 +116,7 @@ describe("create_discussion fallback with close_older_discussions", () => {
     vi.clearAllMocks();
   });
 
-  it("should close older issues when close_older_discussions is enabled and fallback to issue occurs", async () => {
+  it("should close older issues when close_older_discussions is enabled and fall back to issue occurs", async () => {
     // Create handler with close_older_discussions enabled
     const handler = await createDiscussionMain({
       max: 5,

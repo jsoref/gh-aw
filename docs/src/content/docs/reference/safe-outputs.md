@@ -827,7 +827,7 @@ safe-outputs:
     max: 3                       # max discussions (default: 1)
     target-repo: "owner/repo"    # cross-repository
     allowed-repos: ["org/repo1", "org/repo2"]  # additional allowed repositories
-    fallback-to-issue: true      # fallback to issue creation on permission errors (default: true)
+    fallback-to-issue: true      # fall back to issue creation on permission errors (default: true)
     github-token: ${{ secrets.SOME_CUSTOM_TOKEN }} # optional custom token for permissions
 ```
 

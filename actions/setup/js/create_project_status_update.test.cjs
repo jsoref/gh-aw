@@ -156,7 +156,7 @@ describe("create_project_status_update", () => {
     expect(result.status).toBe("ON_TRACK");
   });
 
-  it("should validate status enum and fallback to ON_TRACK for invalid values", async () => {
+  it("should validate status enum and fall back to ON_TRACK for invalid values", async () => {
     mockGithub.graphql
       .mockResolvedValueOnce({
         organization: {

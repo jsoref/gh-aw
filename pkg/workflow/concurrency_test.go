@@ -540,7 +540,7 @@ func TestGenerateJobConcurrencyConfig(t *testing.T) {
 			},
 			expected: `concurrency:
   group: "gh-aw-claude-${{ github.workflow }}-${{ inputs.organization || github.run_id }}"`,
-			description: "job-discriminator works with any engine; fallback to run_id handles scheduled (no-input) runs",
+			description: "job-discriminator works with any engine; fall back to run_id handles scheduled (no-input) runs",
 		},
 		{
 			name: "Job discriminator ignored when push trigger (special trigger, no default group)",

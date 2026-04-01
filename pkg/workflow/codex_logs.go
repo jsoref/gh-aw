@@ -275,7 +275,7 @@ func (e *CodexEngine) extractOutputSizeFromJSON(jsonStr string) int {
 	// Try to parse as proper JSON first
 	var result map[string]any
 	if err := json.Unmarshal([]byte(jsonStr), &result); err != nil {
-		// If JSON parsing fails, fallback to simple string extraction
+		// If JSON parsing fails, fall back to simple string extraction
 		codexLogsLog.Printf("Failed to parse JSON result, using fallback: %v", err)
 		return e.extractOutputSizeFromJSONFallback(jsonStr)
 	}

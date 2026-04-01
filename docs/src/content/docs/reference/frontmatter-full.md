@@ -2948,7 +2948,7 @@ safe-outputs:
     # (optional)
     close-older-key: "example-value"
 
-    # When true (default), fallback to creating an issue if discussion creation fails
+    # When true (default), fall back to creating an issue if discussion creation fails
     # due to permissions. The fallback issue will include a note indicating it was
     # intended to be a discussion. If close-older-discussions is enabled, the
     # close-older-issues logic will be applied to the fallback issue.

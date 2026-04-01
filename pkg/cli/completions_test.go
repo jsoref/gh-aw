@@ -60,7 +60,7 @@ engine: copilot
 # Test workflow
 `,
 			wantDesc:    "Production deployment workflow",
-			description: "Should fallback to name field",
+			description: "Should fall back to name field",
 		},
 		{
 			name: "workflow with neither description nor name",

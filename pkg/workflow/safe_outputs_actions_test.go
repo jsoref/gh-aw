@@ -208,7 +208,7 @@ func TestGenerateActionToolDefinitionFallbackDescription(t *testing.T) {
 			wantDescription: "Action description (can only be called once)",
 		},
 		{
-			name:            "fallback to action name",
+			name:            "fall back to action name",
 			config:          &SafeOutputActionConfig{},
 			wantDescription: "Run the my-action action (can only be called once)",
 		},

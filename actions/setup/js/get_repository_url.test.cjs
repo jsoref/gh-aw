@@ -85,7 +85,7 @@ describe("get_repository_url.cjs", () => {
       expect(result).toBe("https://github.enterprise.com/targetowner/targetrepo");
     });
 
-    it("should fallback to context repo when payload is missing", () => {
+    it("should fall back to context repo when payload is missing", () => {
       global.context.payload = {};
 
       const result = getRepositoryUrl();

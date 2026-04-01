@@ -248,7 +248,7 @@ func (c *EngineCatalog) Resolve(id string, config *EngineConfig) (*ResolvedEngin
 	// Fall back to runtime-ID prefix lookup for backward compat (e.g. "codex-experimental")
 	runtime, err := c.registry.GetEngineByPrefix(id)
 	if err == nil {
-		engineCatalogLog.Printf("Engine %q resolved via runtime-ID prefix fallback to %q", id, runtime.GetID())
+		engineCatalogLog.Printf("Engine %q resolved via runtime-ID prefix fall back to %q", id, runtime.GetID())
 		def := &EngineDefinition{
 			ID:          id,
 			DisplayName: runtime.GetDisplayName(),

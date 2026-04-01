@@ -36,7 +36,7 @@ func sanitizeBranchName(name string) string {
 	// Trim leading/trailing hyphens
 	name = strings.Trim(name, "-")
 
-	// Ensure non-empty (fallback to "workflow")
+	// Ensure non-empty (fall back to "workflow")
 	if name == "" {
 		name = "workflow"
 	}

@@ -47,7 +47,7 @@ const { ERR_VALIDATION } = require("./error_codes.cjs");
  * 1. Load agent output
  * 2. Find matching item(s)
  * 3. Handle staged mode
- * 4. Parse configuration (from passed config or fallback to env vars)
+ * 4. Parse configuration (from passed config or fall back to env vars)
  * 5. Resolve target (for single-item processors)
  *
  * @param {ProcessorConfig} config - Processor configuration

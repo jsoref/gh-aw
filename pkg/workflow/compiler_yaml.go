@@ -672,7 +672,7 @@ func writeStepsSection(yaml *strings.Builder, stepsYAML string) {
 }
 
 func (c *Compiler) generateCreateAwInfo(yaml *strings.Builder, data *WorkflowData, engine CodingAgentEngine) {
-	// Engine ID (prefer EngineConfig.ID, fallback to AI field for backwards compatibility)
+	// Engine ID (prefer EngineConfig.ID, fall back to AI field for backwards compatibility)
 	engineID := engine.GetID()
 	if data.EngineConfig != nil && data.EngineConfig.ID != "" {
 		engineID = data.EngineConfig.ID

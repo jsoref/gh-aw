@@ -416,7 +416,7 @@ func resolveWorkflowFileInDir(fileOrWorkflowName string, verbose bool, workflowD
 		// Return absolute path
 		absPath, err := filepath.Abs(fileOrWorkflowName)
 		if err != nil {
-			return fileOrWorkflowName, nil // fallback to original path
+			return fileOrWorkflowName, nil // fall back to original path
 		}
 		return absPath, nil
 	}
@@ -464,7 +464,7 @@ func resolveWorkflowFileInDir(fileOrWorkflowName string, verbose bool, workflowD
 	// Return absolute path
 	absPath, err := filepath.Abs(path)
 	if err != nil {
-		return path, nil // fallback to original path
+		return path, nil // fall back to original path
 	}
 	return absPath, nil
 }

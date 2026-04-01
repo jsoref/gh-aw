@@ -115,7 +115,7 @@ func TestIsFeatureEnabledWithData(t *testing.T) {
 			description: "When feature is explicitly disabled in frontmatter, env should be ignored",
 		},
 		{
-			name:        "fallback to env when not in frontmatter",
+			name:        "fall back to env when not in frontmatter",
 			envValue:    "firewall",
 			frontmatter: map[string]any{"other-feature": true},
 			engineID:    string(constants.CopilotEngine),

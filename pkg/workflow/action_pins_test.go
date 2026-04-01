@@ -576,7 +576,7 @@ func TestGetActionPinWithData_SemverPreference(t *testing.T) {
 			shouldFallback: false,
 		},
 		{
-			name:           "fallback to highest semver-compatible version for upload-artifact when requesting v4",
+			name:           "fall back to highest semver-compatible version for upload-artifact when requesting v4",
 			repo:           "actions/upload-artifact",
 			requestedVer:   "v4",
 			expectedVer:    "v4", // Comment shows requested version, not the pin's v4.6.2
@@ -587,7 +587,7 @@ func TestGetActionPinWithData_SemverPreference(t *testing.T) {
 			// to preserve the user's intent.
 		},
 		{
-			name:           "fallback to highest semver-compatible version for upload-artifact when requesting v5",
+			name:           "fall back to highest semver-compatible version for upload-artifact when requesting v5",
 			repo:           "actions/upload-artifact",
 			requestedVer:   "v5",
 			expectedVer:    "v5", // Comment shows requested version, not the pin's v5.0.0
