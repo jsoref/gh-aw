@@ -61,15 +61,47 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/token-optimizer-claude
 
-      echo "📥 Loading Claude workflow runs from last 24 hours..."
-      gh aw logs \
-        --engine claude \
-        --start-date -1d \
-        --json \
-        -c 300 \
-        > /tmp/token-optimizer-claude/claude-runs.json 2>/dev/null || echo "[]" > /tmp/token-optimizer-claude/claude-runs.json
+      # Try to use pre-fetched logs from the Token Logs Fetch workflow to avoid redundant API calls
+      TODAY=$(date -u +%Y-%m-%d)
+      FETCH_RUN_ID=$(gh run list \
+        --workflow "token-logs-fetch.lock.yml" \
+        --status success \
+        --limit 1 \
+        --json databaseId \
+        --jq '.[0].databaseId' 2>/dev/null || echo "")
+      USED_CACHE=false
+      if [ -n "$FETCH_RUN_ID" ]; then
+        CACHE_TMP="/tmp/token-logs-cache-claude-optimizer"
+        mkdir -p "$CACHE_TMP"
+        gh run download "$FETCH_RUN_ID" \
+          --repo "$GITHUB_REPOSITORY" \
+          --name "cache-memory" \
+          --dir "$CACHE_TMP" \
+          2>/dev/null || true
+        CACHE_DATE=$(cat "$CACHE_TMP/token-logs/fetch-date.txt" 2>/dev/null || echo "")
+        if [ "$CACHE_DATE" = "$TODAY" ] && [ -s "$CACHE_TMP/token-logs/claude-runs.json" ]; then
+          echo "✅ Using pre-fetched logs from Token Logs Fetch run $FETCH_RUN_ID (date: $CACHE_DATE)"
+          cp "$CACHE_TMP/token-logs/claude-runs.json" /tmp/token-optimizer-claude/claude-runs.json
+          USED_CACHE=true
+        else
+          echo "ℹ️ No valid cached logs found (cache date: ${CACHE_DATE:-none}, today: $TODAY)"
+        fi
+      fi
 
-      RUN_COUNT=$(jq '. | length' /tmp/token-optimizer-claude/claude-runs.json 2>/dev/null || echo 0)
+      if [ "$USED_CACHE" != "true" ]; then
+        echo "📥 Loading Claude workflow runs from last 24 hours..."
+        gh aw logs \
+          --engine claude \
+          --start-date -1d \
+          --json \
+          -c 300 \
+          > /tmp/token-optimizer-claude/claude-runs-raw.json 2>/dev/null || echo '{"runs":[]}' > /tmp/token-optimizer-claude/claude-runs-raw.json
+
+        # Extract runs array from the JSON output
+        jq '.runs // []' /tmp/token-optimizer-claude/claude-runs-raw.json > /tmp/token-optimizer-claude/claude-runs.json 2>/dev/null || echo "[]" > /tmp/token-optimizer-claude/claude-runs.json
+      fi
+
+      RUN_COUNT=$(jq 'length' /tmp/token-optimizer-claude/claude-runs.json 2>/dev/null || echo 0)
       echo "Found ${RUN_COUNT} Claude runs"
 
       if [ "$RUN_COUNT" -eq 0 ]; then
@@ -80,16 +112,17 @@ steps:
       # Find the most expensive workflow (by total tokens across all its runs)
       echo "🔍 Identifying most expensive workflow..."
       jq -r '
-        group_by(.workflowName) |
+        sort_by(.workflow_name) |
+        group_by(.workflow_name) |
         map({
-          workflow: .[0].workflowName,
-          total_tokens: (map(.tokenUsage) | add),
-          total_cost: (map(.estimatedCost) | add),
+          workflow: .[0].workflow_name,
+          total_tokens: (map(.token_usage) | add),
+          total_cost: 0,
           run_count: length,
-          avg_tokens: ((map(.tokenUsage) | add) / length),
-          run_ids: map(.databaseId),
-          latest_run_id: (sort_by(.createdAt) | last | .databaseId),
-          latest_run_url: (sort_by(.createdAt) | last | .url)
+          avg_tokens: ((map(.token_usage) | add) / length),
+          run_ids: map(.database_id),
+          latest_run_id: (sort_by(.created_at) | last | .database_id),
+          latest_run_url: (sort_by(.created_at) | last | .url)
         }) |
         sort_by(.total_tokens) | reverse | .[0]
       ' /tmp/token-optimizer-claude/claude-runs.json > /tmp/token-optimizer-claude/top-workflow.json

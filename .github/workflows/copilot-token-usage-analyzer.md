@@ -53,15 +53,47 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/token-analyzer
 
-      echo "📥 Downloading Copilot workflow runs from last 24 hours..."
-      gh aw logs \
-        --engine copilot \
-        --start-date -1d \
-        --json \
-        -c 300 \
-        > /tmp/token-analyzer/copilot-runs.json 2>/dev/null || echo "[]" > /tmp/token-analyzer/copilot-runs.json
+      # Try to use pre-fetched logs from the Token Logs Fetch workflow to avoid redundant API calls
+      TODAY=$(date -u +%Y-%m-%d)
+      FETCH_RUN_ID=$(gh run list \
+        --workflow "token-logs-fetch.lock.yml" \
+        --status success \
+        --limit 1 \
+        --json databaseId \
+        --jq '.[0].databaseId' 2>/dev/null || echo "")
+      USED_CACHE=false
+      if [ -n "$FETCH_RUN_ID" ]; then
+        CACHE_TMP="/tmp/token-logs-cache-analyzer"
+        mkdir -p "$CACHE_TMP"
+        gh run download "$FETCH_RUN_ID" \
+          --repo "$GITHUB_REPOSITORY" \
+          --name "cache-memory" \
+          --dir "$CACHE_TMP" \
+          2>/dev/null || true
+        CACHE_DATE=$(cat "$CACHE_TMP/token-logs/fetch-date.txt" 2>/dev/null || echo "")
+        if [ "$CACHE_DATE" = "$TODAY" ] && [ -s "$CACHE_TMP/token-logs/copilot-runs.json" ]; then
+          echo "✅ Using pre-fetched logs from Token Logs Fetch run $FETCH_RUN_ID (date: $CACHE_DATE)"
+          cp "$CACHE_TMP/token-logs/copilot-runs.json" /tmp/token-analyzer/copilot-runs.json
+          USED_CACHE=true
+        else
+          echo "ℹ️ No valid cached logs found (cache date: ${CACHE_DATE:-none}, today: $TODAY)"
+        fi
+      fi
 
-      RUN_COUNT=$(jq '. | length' /tmp/token-analyzer/copilot-runs.json 2>/dev/null || echo 0)
+      if [ "$USED_CACHE" != "true" ]; then
+        echo "📥 Downloading Copilot workflow runs from last 24 hours..."
+        gh aw logs \
+          --engine copilot \
+          --start-date -1d \
+          --json \
+          -c 300 \
+          > /tmp/token-analyzer/copilot-runs-raw.json 2>/dev/null || echo '{"runs":[]}' > /tmp/token-analyzer/copilot-runs-raw.json
+
+        # Extract runs array from the JSON output
+        jq '.runs // []' /tmp/token-analyzer/copilot-runs-raw.json > /tmp/token-analyzer/copilot-runs.json 2>/dev/null || echo "[]" > /tmp/token-analyzer/copilot-runs.json
+      fi
+
+      RUN_COUNT=$(jq 'length' /tmp/token-analyzer/copilot-runs.json 2>/dev/null || echo 0)
       echo "✅ Found ${RUN_COUNT} Copilot workflow runs"
 
       # Download token-usage.jsonl artifacts for per-model breakdown
@@ -70,7 +102,7 @@ steps:
       mkdir -p "$ARTIFACT_DIR"
 
       echo "📥 Downloading token-usage.jsonl artifacts..."
-      jq -r '.[0:50][]?.databaseId' /tmp/token-analyzer/copilot-runs.json 2>/dev/null > /tmp/token-analyzer/run-ids.txt || true
+      jq -r '.[0:50][]?.database_id' /tmp/token-analyzer/copilot-runs.json 2>/dev/null > /tmp/token-analyzer/run-ids.txt || true
       while read -r run_id; do
         run_dir="$ARTIFACT_DIR/$run_id"
         mkdir -p "$run_dir"
@@ -120,7 +152,7 @@ You are the Copilot Token Usage Analyzer. Your job is to analyze Copilot token c
 
 Pre-downloaded data is available in `/tmp/token-analyzer/`:
 
-- **`/tmp/token-analyzer/copilot-runs.json`** — All Copilot workflow runs from the last 24 hours (array of run objects with `workflowName`, `databaseId`, `tokenUsage`, `estimatedCost`, `turns`, `url`, `conclusion`, etc.)
+- **`/tmp/token-analyzer/copilot-runs.json`** — All Copilot workflow runs from the last 24 hours (array of run objects with `workflow_name`, `database_id`, `token_usage`, `turns`, `url`, `conclusion`, etc.)
 - **`/tmp/token-analyzer/token-usage-merged.jsonl`** — Merged per-request token records from `firewall-audit-logs` artifacts, with fields: `model`, `provider`, `input_tokens`, `output_tokens`, `cache_read_tokens`, `cache_write_tokens`, `duration_ms`, `run_id`
 
 ## Analysis Process
@@ -130,7 +162,7 @@ Pre-downloaded data is available in `/tmp/token-analyzer/`:
 Process `/tmp/token-analyzer/copilot-runs.json` to compute per-workflow statistics:
 
 ```bash
-jq -r '.[] | [.workflowName, .tokenUsage, .estimatedCost, .turns, .conclusion, .url, .databaseId] | @tsv' \
+jq -r '.[] | [.workflow_name, .token_usage, .turns, .conclusion, .url, .database_id] | @tsv' \
   /tmp/token-analyzer/copilot-runs.json
 ```
 
