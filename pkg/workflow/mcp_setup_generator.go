@@ -704,6 +704,17 @@ func (c *Compiler) generateMCPSetup(yaml *strings.Builder, tools map[string]any,
 		containerCmd.WriteString(" -e GH_AW_SAFE_OUTPUTS_PORT")
 		containerCmd.WriteString(" -e GH_AW_SAFE_OUTPUTS_API_KEY")
 	}
+	// OpenTelemetry trace correlation env vars - pass to gateway so it can expand the
+	// ${GITHUB_AW_OTEL_TRACE_ID} and ${GITHUB_AW_OTEL_PARENT_SPAN_ID} references written
+	// directly in the opentelemetry config block (spec §4.1.3.6). These are set at
+	// runtime via GITHUB_ENV by actions/setup and cannot be known at compile time.
+	// The endpoint and headers are written as literal values in the config, so their
+	// corresponding env vars (OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_HEADERS)
+	// are not passed to the gateway container.
+	if workflowData.OTLPEndpoint != "" {
+		containerCmd.WriteString(" -e GITHUB_AW_OTEL_TRACE_ID")
+		containerCmd.WriteString(" -e GITHUB_AW_OTEL_PARENT_SPAN_ID")
+	}
 	if len(gatewayConfig.Env) > 0 {
 		// Using functional helper to extract map keys
 		envVarNames := sliceutil.MapToSlice(gatewayConfig.Env)
@@ -748,6 +759,10 @@ func (c *Compiler) generateMCPSetup(yaml *strings.Builder, tools map[string]any,
 		if HasSafeOutputsEnabled(workflowData.SafeOutputs) {
 			addedEnvVars["GH_AW_SAFE_OUTPUTS_PORT"] = true
 			addedEnvVars["GH_AW_SAFE_OUTPUTS_API_KEY"] = true
+		}
+		if workflowData.OTLPEndpoint != "" {
+			addedEnvVars["GITHUB_AW_OTEL_TRACE_ID"] = true
+			addedEnvVars["GITHUB_AW_OTEL_PARENT_SPAN_ID"] = true
 		}
 
 		// Mark gateway config environment variables as added
