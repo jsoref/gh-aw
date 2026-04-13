@@ -257,7 +257,7 @@ func TestContainsCheckout(t *testing.T) {
 			expected: true,
 		},
 		{
-			name: "case insensitive detection",
+			name: "case-insensitive detection",
 			customSteps: `steps:
   - name: Checkout
     uses: Actions/Checkout@v5`,

@@ -22,7 +22,7 @@ func TestIsFeatureEnabled(t *testing.T) {
 			expected: true,
 		},
 		{
-			name:     "feature enabled - case insensitive",
+			name:     "feature enabled - case-insensitive",
 			envValue: "FIREWALL",
 			flag:     "firewall",
 			expected: true,
@@ -133,13 +133,13 @@ func TestIsFeatureEnabledWithData(t *testing.T) {
 			description: "When feature is in neither frontmatter nor env, should be disabled",
 		},
 		{
-			name:        "case insensitive frontmatter check",
+			name:        "case-insensitive frontmatter check",
 			envValue:    "",
 			frontmatter: map[string]any{"FIREWALL": true},
 			engineID:    string(constants.CopilotEngine),
 			flag:        "firewall",
 			expected:    true,
-			description: "Frontmatter feature check should be case insensitive",
+			description: "Frontmatter feature check should be case-insensitive",
 		},
 		{
 			name:        "nil frontmatter falls back to env",

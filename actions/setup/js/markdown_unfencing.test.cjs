@@ -56,13 +56,13 @@ describe("markdown_unfencing.cjs", () => {
     expect(unfenceMarkdown(input)).toBe(expected);
   });
 
-  it("should be case insensitive for MARKDOWN tag", () => {
+  it("should be case-insensitive for MARKDOWN tag", () => {
     const input = "```MARKDOWN\nContent\n```";
     const expected = "Content";
     expect(unfenceMarkdown(input)).toBe(expected);
   });
 
-  it("should be case insensitive for MD tag", () => {
+  it("should be case-insensitive for MD tag", () => {
     const input = "```MD\nContent\n```";
     const expected = "Content";
     expect(unfenceMarkdown(input)).toBe(expected);

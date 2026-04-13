@@ -76,7 +76,7 @@ func TestDomainMatchesRule(t *testing.T) {
 			expected: false,
 		},
 		{
-			name: "case insensitive match",
+			name: "case-insensitive match",
 			host: "API.GitHub.COM:443",
 			rule: PolicyRule{
 				Domains: []string{".github.com"},

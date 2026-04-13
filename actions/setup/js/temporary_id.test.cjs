@@ -716,7 +716,7 @@ describe("temporary_id.cjs", () => {
       expect(replaceTemporaryProjectReferences(text, map)).toBe("See #aw_unresol");
     });
 
-    it("should be case insensitive", async () => {
+    it("should be case-insensitive", async () => {
       const { replaceTemporaryProjectReferences } = await import("./temporary_id.cjs");
       const map = new Map([["aw_abc123", "https://github.com/orgs/myorg/projects/123"]]);
       const text = "Project: #AW_ABC123";

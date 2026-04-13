@@ -534,7 +534,7 @@ jobs:
 			expectError: false,
 		},
 		{
-			name: "case insensitive schedule detection",
+			name: "case-insensitive schedule detection",
 			mdContent: `---
 on:
   SCHEDULE:
@@ -556,7 +556,7 @@ jobs:
 			expectError: false,
 		},
 		{
-			name: "case insensitive workflow_dispatch detection",
+			name: "case-insensitive workflow_dispatch detection",
 			mdContent: `---
 on:
   WORKFLOW_DISPATCH:

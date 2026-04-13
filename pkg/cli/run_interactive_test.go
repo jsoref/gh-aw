@@ -414,7 +414,7 @@ func TestSelectWorkflowFuzzySearchability(t *testing.T) {
 			shouldMatch:   true, // t(est-) w(ork) f(low)
 		},
 		{
-			name:          "case insensitive",
+			name:          "case-insensitive",
 			workflowName:  "test-workflow",
 			searchPattern: "TEST",
 			shouldMatch:   true,
