@@ -73,7 +73,7 @@ Authentication Requirements:
 Project Setup:
   Use --with-project-setup to automatically create:
   - Standard views (Progress Board, Task Tracker, Roadmap)
-  - Custom fields (Tracker Id, Worker Workflow, Target Repo, Priority, Size, dates)
+  - Custom fields (Tracker ID, Worker Workflow, Target Repo, Priority, Size, dates)
   - Enhanced Status field with "Review Required" option
 
 Examples:
@@ -502,7 +502,7 @@ func createStandardFields(ctx context.Context, projectURL string, projectNumber 
 		dataType string
 		options  []string // For SINGLE_SELECT fields
 	}{
-		{"Tracker Id", "TEXT", nil},
+		{"Tracker ID", "TEXT", nil},
 		{"Worker Workflow", "TEXT", nil},
 		{"Target Repo", "TEXT", nil},
 		{"Priority", "SINGLE_SELECT", []string{"High", "Medium", "Low"}},

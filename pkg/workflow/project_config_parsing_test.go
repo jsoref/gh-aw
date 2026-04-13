@@ -208,13 +208,13 @@ func TestParseProjectFieldDefinitions(t *testing.T) {
 			input: map[string]any{
 				"field-definitions": []any{
 					map[string]any{
-						"name":      "Tracking Id",
+						"name":      "Tracking ID",
 						"data-type": "TEXT",
 					},
 				},
 			},
 			expected: []ProjectFieldDefinition{
-				{Name: "Tracking Id", DataType: "TEXT"},
+				{Name: "Tracking ID", DataType: "TEXT"},
 			},
 		},
 		{
@@ -299,7 +299,7 @@ func TestParseProjectFieldDefinitions(t *testing.T) {
 			input: map[string]any{
 				"field-definitions": []any{
 					map[string]any{
-						"name":      "Tracking Id",
+						"name":      "Tracking ID",
 						"data-type": "TEXT",
 					},
 					map[string]any{
@@ -314,7 +314,7 @@ func TestParseProjectFieldDefinitions(t *testing.T) {
 				},
 			},
 			expected: []ProjectFieldDefinition{
-				{Name: "Tracking Id", DataType: "TEXT"},
+				{Name: "Tracking ID", DataType: "TEXT"},
 				{Name: "Priority", DataType: "SINGLE_SELECT", Options: []string{"High", "Medium", "Low"}},
 				{Name: "Start Date", DataType: "DATE"},
 			},

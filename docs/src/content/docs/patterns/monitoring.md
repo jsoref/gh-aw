@@ -45,9 +45,9 @@ This is useful for scheduled workflows (daily/weekly) or orchestrator workflows.
 
 See the full reference: [/reference/safe-outputs/#project-status-updates-create-project-status-update](/gh-aw/reference/safe-outputs/#project-status-updates-create-project-status-update)
 
-### 3) Correlate work with a Tracker Id field
+### 3) Correlate work with a Tracker ID field
 
-If you want to correlate multiple runs, add a custom field like **Tracker Id** (text) and populate it from your workflow prompt/output (for example, a run ID, issue number, or “initiative” key).
+If you want to correlate multiple runs, add a custom field like **Tracker ID** (text) and populate it from your workflow prompt/output (for example, a run ID, issue number, or “initiative” key).
 
 ## Run failure issues
 

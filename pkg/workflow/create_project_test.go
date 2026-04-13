@@ -272,7 +272,7 @@ func TestCreateProjectsConfig_FieldDefinitionsParsing(t *testing.T) {
 			"max": 1,
 			"field-definitions": []any{
 				map[string]any{
-					"name":      "Tracking Id",
+					"name":      "Tracking ID",
 					"data-type": "TEXT",
 				},
 				map[string]any{
@@ -293,7 +293,7 @@ func TestCreateProjectsConfig_FieldDefinitionsParsing(t *testing.T) {
 	require.Len(t, config.FieldDefinitions, 3, "Should parse 3 field definitions")
 
 	// Check first field
-	assert.Equal(t, "Tracking Id", config.FieldDefinitions[0].Name)
+	assert.Equal(t, "Tracking ID", config.FieldDefinitions[0].Name)
 	assert.Equal(t, "TEXT", config.FieldDefinitions[0].DataType)
 	assert.Empty(t, config.FieldDefinitions[0].Options)
 
@@ -347,7 +347,7 @@ func TestCreateProjectsConfig_ViewsAndFieldDefinitions(t *testing.T) {
 			},
 			"field-definitions": []any{
 				map[string]any{
-					"name":      "Tracking Id",
+					"name":      "Tracking ID",
 					"data-type": "TEXT",
 				},
 				map[string]any{
@@ -369,7 +369,7 @@ func TestCreateProjectsConfig_ViewsAndFieldDefinitions(t *testing.T) {
 
 	// Check field definitions
 	require.Len(t, config.FieldDefinitions, 2, "Should have 2 field definitions")
-	assert.Equal(t, "Tracking Id", config.FieldDefinitions[0].Name)
+	assert.Equal(t, "Tracking ID", config.FieldDefinitions[0].Name)
 	assert.Equal(t, "TEXT", config.FieldDefinitions[0].DataType)
 	assert.Equal(t, "Size", config.FieldDefinitions[1].Name)
 	assert.Equal(t, "SINGLE_SELECT", config.FieldDefinitions[1].DataType)
