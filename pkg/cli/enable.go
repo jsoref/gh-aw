@@ -206,7 +206,7 @@ func toggleWorkflowsByNames(workflowNames []string, enable bool, repoOverride st
 	for _, t := range targets {
 		var cmd *exec.Cmd
 		if enable {
-			// Prefer enabling by ID, otherwise fall back to lock file name
+			// Prefer enabling by ID; otherwise, fall back to lock file name
 			if t.ID != 0 {
 				args := []string{"workflow", "enable", strconv.FormatInt(t.ID, 10)}
 				if repoOverride != "" {

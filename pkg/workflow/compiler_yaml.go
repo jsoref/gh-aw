@@ -840,7 +840,7 @@ func (c *Compiler) generateOutputCollectionStep(yaml *strings.Builder, data *Wor
 	// Config is written to file, not passed as env var
 
 	// Add allowed domains configuration for sanitization
-	// Use manually configured domains if available, otherwise compute from network configuration
+	// Use manually configured domains if available; otherwise, compute from network configuration
 	var domainsStr string
 	if data.SafeOutputs != nil && len(data.SafeOutputs.AllowedDomains) > 0 {
 		// allowed-domains: additional domains unioned with engine/network base set; supports ecosystem identifiers

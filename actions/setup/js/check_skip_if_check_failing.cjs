@@ -8,7 +8,7 @@ const { writeDenialSummary } = require("./pre_activation_summary.cjs");
 
 /**
  * Determines the ref to check for CI status.
- * Uses GH_AW_SKIP_BRANCH if set as an explicit override, otherwise delegates
+ * Uses GH_AW_SKIP_BRANCH if set as an explicit override; otherwise, delegates
  * to the shared getBaseBranch() helper which handles PR base branch, issue_comment
  * on PR, and repository default branch resolution.
  *

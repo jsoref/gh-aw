@@ -95,7 +95,7 @@ func GetBaseInstallationSteps(config EngineInstallConfig, workflowData *Workflow
 
 	// Secret validation step is now generated in the activation job (GetSecretValidationStep).
 
-	// Determine step name - use InstallStepName if provided, otherwise default to "Install <Name>"
+	// Determine step name - use InstallStepName if provided; otherwise, default to "Install <Name>"
 	stepName := config.InstallStepName
 	if stepName == "" {
 		stepName = "Install " + config.Name
@@ -135,7 +135,7 @@ func BuildStandardNpmEngineInstallSteps(
 ) []GitHubActionStep {
 	engineHelpersLog.Printf("Building npm engine install steps: package=%s, version=%s", packageName, defaultVersion)
 
-	// Use version from engine config if provided, otherwise default to pinned version
+	// Use version from engine config if provided; otherwise, default to pinned version
 	version := defaultVersion
 	if workflowData.EngineConfig != nil && workflowData.EngineConfig.Version != "" {
 		version = workflowData.EngineConfig.Version

@@ -70,7 +70,7 @@ func FormatImportCycleError(err *ImportCycleError) error {
 
 // FormattedParserError is a sentinel error type returned by FormatImportError (and similar
 // parser-level formatters) to signal that the error message is already console-formatted
-// with source location.  Callers that detect this type must NOT re-wrap it, otherwise the
+// with source location.  Callers that detect this type must NOT re-wrap it; otherwise, the
 // user would see a double-formatted error message (e.g. one location at "engine:" wrapping
 // another at the actual import line).
 //

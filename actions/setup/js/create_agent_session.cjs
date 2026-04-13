@@ -65,7 +65,7 @@ async function main(config = {}) {
     }
     const { repo: effectiveRepo, repoParts } = repoResult;
 
-    // Resolve base branch: use custom config if set, otherwise resolve dynamically.
+    // Resolve base branch: use custom config if set; otherwise, resolve dynamically.
     // Dynamic resolution is needed for issue_comment events on PRs where the base branch
     // is not available in GitHub Actions expressions and requires an API call.
     const baseBranch = configuredBaseBranch || (await getBaseBranch(repoParts));

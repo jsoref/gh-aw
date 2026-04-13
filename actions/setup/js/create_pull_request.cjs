@@ -491,7 +491,7 @@ async function main(config = {}) {
     core.info(`Target repository: ${itemRepo}`);
 
     // Resolve base branch for this target repository
-    // Use config value if set, otherwise resolve dynamically for the specific target repo
+    // Use config value if set; otherwise, resolve dynamically for the specific target repo
     // Dynamic resolution is needed for issue_comment events on PRs where the base branch
     // is not available in GitHub Actions expressions and requires an API call
     // NOTE: Must be resolved before checkout so cross-repo checkout uses the correct branch

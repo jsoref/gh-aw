@@ -127,7 +127,7 @@ func (r *MCPConfigRendererUnified) renderGitHubTOML(yaml *strings.Builder, githu
 	}
 	yaml.WriteString("          user_agent = \"" + userAgent + "\"\n")
 
-	// Use tools.startup-timeout if specified, otherwise default to DefaultMCPStartupTimeout
+	// Use tools.startup-timeout if specified; otherwise, default to DefaultMCPStartupTimeout
 	// For GitHub Actions expressions, fall back to default (TOML format doesn't support expressions)
 	startupTimeout := int(constants.DefaultMCPStartupTimeout / time.Second)
 	if workflowData != nil && workflowData.ToolsStartupTimeout != "" {
@@ -137,7 +137,7 @@ func (r *MCPConfigRendererUnified) renderGitHubTOML(yaml *strings.Builder, githu
 	}
 	fmt.Fprintf(yaml, "          startup_timeout_sec = %d\n", startupTimeout)
 
-	// Use tools.timeout if specified, otherwise default to DefaultToolTimeout
+	// Use tools.timeout if specified; otherwise, default to DefaultToolTimeout
 	// For GitHub Actions expressions, fall back to default (TOML format doesn't support expressions)
 	toolTimeout := int(constants.DefaultToolTimeout / time.Second)
 	if workflowData != nil && workflowData.ToolsTimeout != "" {

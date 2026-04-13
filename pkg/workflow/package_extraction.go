@@ -276,7 +276,7 @@ func (pe *PackageExtractor) ExtractPackages(commands string) []string {
 }
 
 // getRequiredSubcommands returns the list of required subcommands.
-// It prefers RequiredSubcommands if set, otherwise falls back to RequiredSubcommand.
+// It prefers RequiredSubcommands if set; otherwise, falls back to RequiredSubcommand.
 func (pe *PackageExtractor) getRequiredSubcommands() []string {
 	if len(pe.RequiredSubcommands) > 0 {
 		return pe.RequiredSubcommands

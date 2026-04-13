@@ -73,7 +73,7 @@ async function fetchRepoDiscussionInfo(githubClient, owner, repo) {
  * @returns {{id: string, matchType: string, name: string, requestedCategory?: string}|undefined} Resolved category info
  */
 function resolveCategoryId(categoryConfig, itemCategory, categories) {
-  // Use item category if provided, otherwise use config
+  // Use item category if provided; otherwise, use config
   const categoryToMatch = itemCategory || categoryConfig;
 
   if (categoryToMatch) {
@@ -98,7 +98,7 @@ function resolveCategoryId(categoryConfig, itemCategory, categories) {
     }
   }
 
-  // Fall back to "Announcements" category if available, otherwise first category
+  // Fall back to "Announcements" category if available; otherwise, first category
   if (categories.length > 0) {
     // Try to find an "Announcements" category (case-insensitive)
     const announcementCategory = categories.find(cat => cat.name.toLowerCase() === "announcements" || cat.slug.toLowerCase() === "announcements");
@@ -302,7 +302,7 @@ async function main(config = {}) {
   const includeFooter = parseBoolTemplatable(config.footer, true);
 
   // Create an authenticated GitHub client. Uses config["github-token"] when set
-  // (for cross-repository operations), otherwise falls back to the step-level github.
+  // (for cross-repository operations); otherwise, falls back to the step-level github.
   const githubClient = await createAuthenticatedGitHubClient(config);
 
   // Check if we're in staged mode

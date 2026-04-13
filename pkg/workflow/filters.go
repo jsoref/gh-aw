@@ -12,7 +12,7 @@ var filtersLog = logger.New("workflow:filters")
 func (c *Compiler) applyPullRequestDraftFilter(data *WorkflowData, frontmatter map[string]any) {
 	filtersLog.Print("Applying pull request draft filter")
 
-	// Use cached On field from ParsedFrontmatter if available, otherwise fall back to map access
+	// Use cached On field from ParsedFrontmatter if available; otherwise, fall back to map access
 	var onValue any
 	var hasOn bool
 	if data.ParsedFrontmatter != nil && data.ParsedFrontmatter.On != nil {
@@ -106,7 +106,7 @@ func (c *Compiler) applyPullRequestDraftFilter(data *WorkflowData, frontmatter m
 func (c *Compiler) applyPullRequestForkFilter(data *WorkflowData, frontmatter map[string]any) {
 	filtersLog.Print("Applying pull request fork filter")
 
-	// Use cached On field from ParsedFrontmatter if available, otherwise fall back to map access
+	// Use cached On field from ParsedFrontmatter if available; otherwise, fall back to map access
 	var onValue any
 	var hasOn bool
 	if data.ParsedFrontmatter != nil && data.ParsedFrontmatter.On != nil {
@@ -197,7 +197,7 @@ func (c *Compiler) applyPullRequestForkFilter(data *WorkflowData, frontmatter ma
 func (c *Compiler) applyLabelFilter(data *WorkflowData, frontmatter map[string]any) {
 	filtersLog.Print("Applying label filter")
 
-	// Use cached On field from ParsedFrontmatter if available, otherwise fall back to map access
+	// Use cached On field from ParsedFrontmatter if available; otherwise, fall back to map access
 	var onValue any
 	var hasOn bool
 	if data.ParsedFrontmatter != nil && data.ParsedFrontmatter.On != nil {

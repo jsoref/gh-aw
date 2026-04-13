@@ -104,7 +104,7 @@ func renderStruct(val reflect.Value, title string, output *strings.Builder, dept
 			continue
 		}
 
-		// Get field name (use tag header if available, otherwise use field name)
+		// Get field name (use tag header if available; otherwise, use field name)
 		fieldName := fieldType.Name
 		if tag.header != "" {
 			fieldName = tag.header
@@ -240,7 +240,7 @@ func buildTableConfig(val reflect.Value, title string) TableConfig {
 			continue
 		}
 
-		// Use header tag if available, otherwise use field name
+		// Use header tag if available; otherwise, use field name
 		headerName := field.Name
 		if tag.header != "" {
 			headerName = tag.header

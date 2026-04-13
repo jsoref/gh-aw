@@ -214,7 +214,7 @@ func renderSharedMCPConfig(yaml *strings.Builder, toolName string, toolConfig ma
 			if isLast {
 				comma = ""
 			}
-			// Check if allowed tools are specified, otherwise default to "*"
+			// Check if allowed tools are specified; otherwise, default to "*"
 			if len(mcpConfig.Allowed) > 0 {
 				fmt.Fprintf(yaml, "%s\"tools\": [\n", renderer.IndentLevel)
 				for toolIndex, tool := range mcpConfig.Allowed {

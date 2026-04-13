@@ -38,7 +38,7 @@ With --no-mcp flag:
 - Skips creating GitHub Copilot Agent MCP server configuration files
 
 With --codespaces flag:
-- Updates existing .devcontainer/devcontainer.json if present, otherwise creates new file at default location
+- Updates existing .devcontainer/devcontainer.json if present; otherwise, creates new file at default location
 - Configures permissions for current repo: actions:write, contents:write, discussions:read, issues:read, pull-requests:write, workflows:write
 - Configures permissions for additional repos (in same org): actions:read, contents:read, discussions:read, issues:read, pull-requests:read, workflows:read
 - Adds GitHub Copilot extensions and gh aw CLI installation

@@ -30,7 +30,7 @@ export const collections = {
 	// 			base: 'changelog',        // base path for changelog pages
 	// 			owner: 'githubnext',      // GitHub org/user
 	// 			repo: 'gh-aw',            // GitHub repo
-	// 			// Use GitHub token if available in environment, otherwise rely on public API
+	// 			// Use GitHub token if available in environment; otherwise, rely on public API
 	// 			...(process.env.GITHUB_TOKEN && { token: process.env.GITHUB_TOKEN }),
 	// 			// No process filter: include all releases
 	// 		},

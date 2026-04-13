@@ -320,7 +320,7 @@ type UpdateEntityParseOptions struct {
 //	cfg.Field2 = parseUpdateEntityBoolField(configMap, "field2", mode)
 //	...
 //
-// Returns nil if parsing fails, otherwise parsing is done in-place via field specs.
+// Returns nil if parsing fails; otherwise, parsing is done in-place via field specs.
 func (c *Compiler) parseUpdateEntityConfigWithFields(
 	outputMap map[string]any,
 	opts UpdateEntityParseOptions,

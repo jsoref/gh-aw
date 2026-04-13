@@ -372,7 +372,7 @@ func (c *ActionCache) Set(repo, version, sha string) {
 }
 
 // GetInputs retrieves the cached action inputs for the given repo and version.
-// Returns the inputs map and true if cached inputs exist, otherwise nil and false.
+// Returns the inputs map and true if cached inputs exist; otherwise, nil and false.
 func (c *ActionCache) GetInputs(repo, version string) (map[string]*ActionYAMLInput, bool) {
 	key := formatActionCacheKey(repo, version)
 	entry, exists := c.Entries[key]
@@ -404,7 +404,7 @@ func (c *ActionCache) SetInputs(repo, version string, inputs map[string]*ActionY
 }
 
 // GetActionDescription retrieves the cached action description for the given repo and version.
-// Returns the description and true if a non-empty description is cached, otherwise "" and false.
+// Returns the description and true if a non-empty description is cached; otherwise, "" and false.
 func (c *ActionCache) GetActionDescription(repo, version string) (string, bool) {
 	key := formatActionCacheKey(repo, version)
 	entry, exists := c.Entries[key]

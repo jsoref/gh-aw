@@ -106,7 +106,7 @@ ls -lh dist/
 echo ""
 echo "Generating checksums..."
 cd dist
-# Use sha256sum if available (Linux), otherwise use shasum (macOS)
+# Use sha256sum if available (Linux); otherwise, use shasum (macOS)
 if command -v sha256sum &> /dev/null; then
   sha256sum * > checksums.txt
 elif command -v shasum &> /dev/null; then

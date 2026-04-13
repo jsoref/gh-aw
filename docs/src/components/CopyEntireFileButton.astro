@@ -323,7 +323,7 @@ const id = `copy-btn-${Math.random().toString(36).substr(2, 9)}`;
     });
   }
 
-  // Run immediately if DOM is already loaded, otherwise wait
+  // Run immediately if DOM is already loaded; otherwise, wait
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', attachCopyHandlers);
   } else {

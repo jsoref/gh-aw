@@ -157,7 +157,7 @@ async function main() {
 
     core.info(`Reaction API endpoint: ${reactionEndpoint}`);
 
-    // For discussions, reactionEndpoint is a node ID (GraphQL), otherwise it's a REST API path
+    // For discussions, reactionEndpoint is a node ID (GraphQL); otherwise, it's a REST API path
     if (eventName === "discussion" || eventName === "discussion_comment") {
       await addDiscussionReaction(reactionEndpoint, reaction);
     } else {

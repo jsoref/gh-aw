@@ -166,7 +166,7 @@ func checkoutMissingPersistCredentialsFalse(step map[string]any) bool {
 }
 
 // stepDisplayName returns a human-readable identifier for a step.
-// It uses the step name if available, otherwise the uses value.
+// It uses the step name if available; otherwise, the uses value.
 func stepDisplayName(step map[string]any) string {
 	if name, ok := step["name"].(string); ok && name != "" {
 		return fmt.Sprintf("'%s'", name)

@@ -168,7 +168,7 @@ function createMCPServer(options = {}) {
 
     logger.debug(`Registering tool: ${tool.name}`);
 
-    // Use tool-specific handler if available, otherwise use defaultHandler with tool name
+    // Use tool-specific handler if available; otherwise, use defaultHandler with tool name
     const toolHandler = tool.handler || defaultHandler(tool.name);
 
     // Register the tool with the MCP SDK using the high-level API

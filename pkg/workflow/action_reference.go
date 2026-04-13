@@ -56,7 +56,7 @@ func resolveSetupActionRef(actionMode ActionMode, version string, actionTag stri
 
 	// Action mode - use external gh-aw-actions repository with SHA pinning if possible
 	if actionMode == ActionModeAction {
-		// Use actionTag if provided, otherwise fall back to version
+		// Use actionTag if provided; otherwise, fall back to version
 		tag := actionTag
 		if tag == "" {
 			tag = version
@@ -94,7 +94,7 @@ func resolveSetupActionRef(actionMode ActionMode, version string, actionTag stri
 	if actionMode == ActionModeRelease {
 		actionPath := strings.TrimPrefix(localPath, "./")
 
-		// Use actionTag if provided, otherwise fall back to version
+		// Use actionTag if provided; otherwise, fall back to version
 		tag := actionTag
 		if tag == "" {
 			tag = version
@@ -157,7 +157,7 @@ func (c *Compiler) resolveActionReference(localActionPath string, data *Workflow
 
 	// For ./actions/setup, check for compiler-level actionTag override first
 	if localActionPath == "./actions/setup" {
-		// Use compiler actionTag if available, otherwise check features
+		// Use compiler actionTag if available; otherwise, check features
 		var resolver ActionSHAResolver
 		if data != nil && data.ActionResolver != nil {
 			resolver = data.ActionResolver
@@ -225,7 +225,7 @@ func (c *Compiler) resolveActionReference(localActionPath string, data *Workflow
 
 // convertToRemoteActionRef converts a local action path to a tag-based remote reference
 // that will be resolved to a SHA later in the release pipeline using action pins.
-// Uses the action-tag from WorkflowData.Features if specified (for testing), otherwise uses the version stored in the compiler binary.
+// Uses the action-tag from WorkflowData.Features if specified (for testing); otherwise, uses the version stored in the compiler binary.
 // If compiler has actionTag set, it takes priority over both.
 // Example: "./actions/create-issue" -> "github/gh-aw/actions/create-issue@v1.0.0"
 func (c *Compiler) convertToRemoteActionRef(localPath string, data *WorkflowData) string {

@@ -439,7 +439,7 @@ func RunWorkflowOnGitHub(ctx context.Context, workflowIdOrName string, opts RunO
 				fmt.Fprintln(os.Stderr, console.FormatWarningMessage(fmt.Sprintf("Could not get workflow run information: %v", runErr)))
 			}
 		} else {
-			// Determine target repository: use repo override if provided, otherwise get current repo
+			// Determine target repository: use repo override if provided; otherwise, get current repo
 			targetRepo := opts.RepoOverride
 			if targetRepo == "" {
 				if currentRepo, err := GetCurrentRepoSlug(); err != nil {

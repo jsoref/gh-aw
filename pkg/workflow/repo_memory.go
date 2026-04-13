@@ -85,7 +85,7 @@ func (c *Compiler) extractRepoMemoryConfig(toolsConfig *ToolsConfig, workflowID 
 	}
 	repoMemoryValue := toolsConfig.RepoMemory.Raw
 
-	// defaultMemoryBranchID returns workflowID when set, otherwise "default".
+	// defaultMemoryBranchID returns workflowID when set; otherwise, "default".
 	// This qualifies the default branch name by workflow, e.g. "memory/repo-assist".
 	defaultMemoryBranchID := func() string {
 		if workflowID != "" {

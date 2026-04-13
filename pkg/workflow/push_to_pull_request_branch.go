@@ -65,7 +65,7 @@ func buildCheckoutRepository(steps []string, c *Compiler, targetRepoSlug string,
 
 	// Add token for trial mode or when checking out a different repository
 	if c.trialMode || targetRepoSlug != "" {
-		// Use custom token if provided, otherwise use default fallback
+		// Use custom token if provided; otherwise, use default fallback
 		token := customToken
 		if token == "" {
 			token = "${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}"

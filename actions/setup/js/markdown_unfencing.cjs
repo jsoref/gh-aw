@@ -17,7 +17,7 @@
  * - The closing fence must match the opening fence type (backticks or tildes)
  *
  * @param {string} content - The markdown content to unfence
- * @returns {string} The unfenced content if a wrapping fence is detected, otherwise original content
+ * @returns {string} The unfenced content if a wrapping fence is detected; otherwise, original content
  */
 function unfenceMarkdown(content) {
   if (!content || typeof content !== "string") {

@@ -52,7 +52,7 @@ func (c *Compiler) buildConsolidatedSafeOutputStep(data *WorkflowData, config Sa
 	steps = append(steps, "          script: |\n")
 
 	// Add the formatted JavaScript script
-	// Use require mode if ScriptName is set, otherwise inline the bundled script
+	// Use require mode if ScriptName is set; otherwise, inline the bundled script
 	if config.ScriptName != "" {
 		// Require mode: Use setup_globals helper
 		steps = append(steps, "            const { setupGlobals } = require('"+SetupActionDestination+"/setup_globals.cjs');\n")

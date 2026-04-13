@@ -118,7 +118,7 @@ def main():
     # Get data from gh CLI
     output = run_gh_command(args.repo, args.limit)
 
-    # Apply jq filter if provided, otherwise return schema
+    # Apply jq filter if provided; otherwise, return schema
     if args.jq_filter:
         result = apply_jq_filter(output, args.jq_filter)
         print(result, end='')

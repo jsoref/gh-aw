@@ -125,7 +125,7 @@ function createUpdateHandlerFactory(handlerConfig) {
     const maxCount = config.max || 10;
 
     // Create an authenticated GitHub client. Uses config["github-token"] when set
-    // (for cross-repository operations), otherwise falls back to the step-level github.
+    // (for cross-repository operations); otherwise, falls back to the step-level github.
     const githubClient = await createAuthenticatedGitHubClient(config);
 
     // Resolve default target repo and allowed repos for cross-repository routing.
@@ -272,7 +272,7 @@ function createUpdateHandlerFactory(handlerConfig) {
       }
 
       // Execute the update using the authenticated client and effective context.
-      // githubClient uses config["github-token"] when set (for cross-repo), otherwise global github.
+      // githubClient uses config["github-token"] when set (for cross-repo); otherwise, global github.
       // effectiveContext.repo contains the target repo owner/name for cross-repo routing.
       // Retry on transient errors (e.g. GitHub API returning HTML instead of JSON on 500 crashes).
       try {

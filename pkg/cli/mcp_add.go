@@ -85,7 +85,7 @@ func AddMCPTool(workflowFile string, mcpServerID string, registryURL string, tra
 		return fmt.Errorf("no MCP servers found matching '%s'", mcpServerID)
 	}
 
-	// Determine tool ID (use custom if provided, otherwise use cleaned server name)
+	// Determine tool ID (use custom if provided; otherwise, use cleaned server name)
 	toolID := stringutil.SanitizeToolID(selectedServer.Name)
 	if customToolID != "" {
 		toolID = customToolID
@@ -201,7 +201,7 @@ func createMCPToolConfig(server *MCPRegistryServerForProcessing, preferredTransp
 				}
 			} else {
 				// Handle regular command and args
-				// Use runtime_hint for command if available, otherwise fall back to Command
+				// Use runtime_hint for command if available; otherwise, fall back to Command
 				if server.RuntimeHint != "" {
 					mcpSection["command"] = server.RuntimeHint
 				} else if server.Command != "" {
@@ -223,7 +223,7 @@ func createMCPToolConfig(server *MCPRegistryServerForProcessing, preferredTransp
 			}
 		} else {
 			// Handle command and args when no config
-			// Use runtime_hint for command if available, otherwise fall back to Command
+			// Use runtime_hint for command if available; otherwise, fall back to Command
 			if server.RuntimeHint != "" {
 				mcpSection["command"] = server.RuntimeHint
 			} else if server.Command != "" {

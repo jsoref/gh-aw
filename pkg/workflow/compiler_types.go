@@ -226,7 +226,7 @@ func (c *Compiler) SetActionsRepo(repo string) {
 }
 
 // effectiveActionsRepo returns the actions repository to use for action mode references.
-// Returns the override if set, otherwise returns the default GitHubActionsOrgRepo constant.
+// Returns the override if set; otherwise, returns the default GitHubActionsOrgRepo constant.
 func (c *Compiler) effectiveActionsRepo() string {
 	if c.actionsRepo != "" {
 		return c.actionsRepo
@@ -302,7 +302,7 @@ func (c *Compiler) SetPriorManifests(manifests map[string]*GHAWManifest) {
 func (c *Compiler) getSharedActionResolver() (*ActionCache, *ActionResolver) {
 	if c.actionCache == nil {
 		// Initialize cache and resolver on first use
-		// Use git root if provided, otherwise fall back to current working directory
+		// Use git root if provided; otherwise, fall back to current working directory
 		baseDir := c.gitRoot
 		if baseDir == "" {
 			cwd, err := os.Getwd()

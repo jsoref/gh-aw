@@ -249,7 +249,7 @@ async function main(config = {}) {
   const includeFooter = parseBoolTemplatable(config.footer, true);
 
   // Create an authenticated GitHub client. Uses config["github-token"] when set
-  // (for cross-repository operations), otherwise falls back to the step-level github.
+  // (for cross-repository operations); otherwise, falls back to the step-level github.
   const githubClient = await createAuthenticatedGitHubClient(config);
 
   // Check if copilot assignment is enabled

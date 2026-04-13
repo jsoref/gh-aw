@@ -467,7 +467,7 @@ func (c *Compiler) buildDetectionEngineExecutionStep(data *WorkflowData) []strin
 		}
 	}
 
-	// Determine which engine to use - threat detection engine if specified, otherwise main engine
+	// Determine which engine to use - threat detection engine if specified; otherwise, main engine
 	engineSetting := data.AI
 	engineConfig := data.EngineConfig
 
@@ -731,7 +731,7 @@ func (c *Compiler) buildDetectionJob(data *WorkflowData) (*Job, error) {
 	// Detection job depends on agent job and activation job (for trace ID)
 	needs := []string{string(constants.AgentJobName), string(constants.ActivationJobName)}
 
-	// Determine runs-on: use threat detection override if set, otherwise ubuntu-latest.
+	// Determine runs-on: use threat detection override if set; otherwise, ubuntu-latest.
 	// The detection job runs on a fresh runner separate from the agent job, so it does
 	// not need the same custom runner as safe-outputs.
 	runsOn := "runs-on: ubuntu-latest"

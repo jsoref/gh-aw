@@ -29,7 +29,7 @@ func (c *Compiler) parseOnSection(frontmatter map[string]any, workflowData *Work
 	var hasStatusComment bool
 	var otherEvents map[string]any
 
-	// Use cached On field from ParsedFrontmatter if available, otherwise fall back to map access
+	// Use cached On field from ParsedFrontmatter if available; otherwise, fall back to map access
 	var onValue any
 	var exists bool
 	if workflowData.ParsedFrontmatter != nil && workflowData.ParsedFrontmatter.On != nil {

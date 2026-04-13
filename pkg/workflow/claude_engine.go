@@ -310,14 +310,14 @@ func (e *ClaudeEngine) GetExecutionSteps(workflowData *WorkflowData, logFile str
 	}
 
 	// Set timeout environment variables for Claude Code
-	// Use tools.startup-timeout if specified, otherwise default to DefaultMCPStartupTimeout
+	// Use tools.startup-timeout if specified; otherwise, default to DefaultMCPStartupTimeout
 	// For expressions, fall back to default (can't compute ms value at compile time)
 	startupTimeoutMs := int(constants.DefaultMCPStartupTimeout / time.Millisecond)
 	if n := templatableIntValue(&workflowData.ToolsStartupTimeout); n > 0 {
 		startupTimeoutMs = n * 1000 // convert seconds to milliseconds
 	}
 
-	// Use tools.timeout if specified, otherwise default to DefaultToolTimeout
+	// Use tools.timeout if specified; otherwise, default to DefaultToolTimeout
 	// For expressions, fall back to default (can't compute ms value at compile time)
 	timeoutMs := int(constants.DefaultToolTimeout / time.Millisecond)
 	if n := templatableIntValue(&workflowData.ToolsTimeout); n > 0 {

@@ -299,7 +299,7 @@ Based on statistical analysis, a typical .lock.yml file has:
 ### Recommended Tools
 
 1. **Bash Scripts**: For file finding and basic text processing
-2. **yq/jq**: For YAML/JSON parsing (if available, otherwise use text processing)
+2. **yq/jq**: For YAML/JSON parsing (if available; otherwise, use text processing)
 3. **awk/grep/sed**: For pattern matching and extraction
 4. **Python**: For complex data analysis if bash is insufficient
 

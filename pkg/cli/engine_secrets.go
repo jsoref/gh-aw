@@ -553,7 +553,7 @@ func GetEngineSecretNameAndValue(engine string, existingSecrets map[string]bool)
 	}
 
 	// Get value from environment variable
-	// Use EnvVarName if specified, otherwise use SecretName
+	// Use EnvVarName if specified; otherwise, use SecretName
 	envVar := opt.SecretName
 	if opt.EnvVarName != "" {
 		envVar = opt.EnvVarName

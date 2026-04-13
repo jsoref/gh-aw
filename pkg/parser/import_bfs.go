@@ -395,7 +395,7 @@ func processImportsFromFrontmatterWithManifestAndSource(frontmatter map[string]a
 						return nil, fmt.Errorf("nested import '%s' from remote file '%s' escapes base directory", nestedFilePath, item.importPath)
 					}
 
-					// Use the parent's BasePath if available, otherwise default to .github/workflows
+					// Use the parent's BasePath if available; otherwise, default to .github/workflows
 					basePath := item.remoteOrigin.BasePath
 					if basePath == "" {
 						basePath = ".github/workflows"

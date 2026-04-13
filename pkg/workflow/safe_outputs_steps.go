@@ -183,7 +183,7 @@ func (c *Compiler) buildGitHubScriptStep(data *WorkflowData, config GitHubScript
 
 	steps = append(steps, "          script: |\n")
 
-	// Use require() if ScriptFile is specified, otherwise inline the script
+	// Use require() if ScriptFile is specified; otherwise, inline the script
 	if config.ScriptFile != "" {
 		steps = append(steps, "            const { setupGlobals } = require('"+SetupActionDestination+"/setup_globals.cjs');\n")
 		steps = append(steps, "            setupGlobals(core, github, context, exec, io, getOctokit);\n")
@@ -240,7 +240,7 @@ func (c *Compiler) buildGitHubScriptStepWithoutDownload(data *WorkflowData, conf
 
 	steps = append(steps, "          script: |\n")
 
-	// Use require() if ScriptFile is specified, otherwise inline the script
+	// Use require() if ScriptFile is specified; otherwise, inline the script
 	if config.ScriptFile != "" {
 		steps = append(steps, "            const { setupGlobals } = require('"+SetupActionDestination+"/setup_globals.cjs');\n")
 		steps = append(steps, "            setupGlobals(core, github, context, exec, io, getOctokit);\n")

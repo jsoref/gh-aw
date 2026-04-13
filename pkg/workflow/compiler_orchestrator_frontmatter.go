@@ -48,7 +48,7 @@ func (c *Compiler) parseFrontmatterSection(markdownPath string) (*frontmatterPar
 	result, err := parser.ExtractFrontmatterFromContent(string(content))
 	if err != nil {
 		orchestratorFrontmatterLog.Printf("Frontmatter extraction failed: %v", err)
-		// Use FrontmatterStart from result if available, otherwise default to line 2 (after opening ---)
+		// Use FrontmatterStart from result if available; otherwise, default to line 2 (after opening ---)
 		frontmatterStart := 2
 		if result != nil && result.FrontmatterStart > 0 {
 			frontmatterStart = result.FrontmatterStart

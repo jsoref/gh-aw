@@ -169,7 +169,7 @@ func enableFirewallByDefaultForEngine(engineID string, networkPermissions *Netwo
 
 // getAWFImageTag returns the AWF Docker image tag to use for the --image-tag flag.
 // This ensures the AWF binary pulls its matching Docker image version instead of latest.
-// Returns the version from firewall config if specified, otherwise returns the default version.
+// Returns the version from firewall config if specified; otherwise, returns the default version.
 // The version is returned without the 'v' prefix (e.g., "0.7.0" instead of "v0.7.0").
 func getAWFImageTag(firewallConfig *FirewallConfig) string {
 	var version string

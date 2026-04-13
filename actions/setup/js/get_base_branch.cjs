@@ -39,7 +39,7 @@ async function getBaseBranch(targetRepo = null) {
   }
 
   // 4. For issue_comment events on PRs - must call API since base ref not in payload
-  // Use targetRepo if provided (cross-repo scenarios), otherwise fall back to context.repo
+  // Use targetRepo if provided (cross-repo scenarios); otherwise, fall back to context.repo
   if (typeof context !== "undefined" && context.eventName === "issue_comment" && context.payload?.issue?.pull_request) {
     try {
       if (typeof github !== "undefined") {
