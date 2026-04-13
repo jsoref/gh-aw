@@ -794,7 +794,7 @@ index 0000000..abc1234
       // pushSignedCommits: git diff --name-status returns file changes
       mockExec.getExecOutput.mockResolvedValueOnce({ exitCode: 0, stdout: "", stderr: "" }); // git diff --name-status (empty - no files)
 
-      // GraphQL call fails, triggering fallback to git push
+      // GraphQL call fails, triggering a fallback to git push
       mockGithub.graphql.mockRejectedValueOnce(new Error("GraphQL error: branch protection"));
 
       // Fallback git push also fails with non-fast-forward
@@ -887,7 +887,7 @@ index 0000000..abc1234
         return originalGetExecOutput(cmd, args);
       });
 
-      // GraphQL call fails, triggering fallback to git push
+      // GraphQL call fails, triggering a fallback to git push
       mockGithub.graphql.mockRejectedValueOnce(new Error("GraphQL error: branch protection"));
       // Fallback git push fails
       mockExec.exec.mockRejectedValueOnce(new Error("remote: Internal Server Error"));
