@@ -166,7 +166,7 @@ strict: false
 
 # Test Workflow
 
-Invalid YAML with missing colon.`,
+Invalid YAML - missing colon.`,
 			expectedErrorLine:   3, // Line 3 in file (line 2 in YAML content - permissions without colon)
 			expectedErrorColumn: 1,
 			expectedMessagePart: "missing ':' after key",
@@ -185,7 +185,7 @@ strict: false
 
 # Test Workflow
 
-Invalid YAML with missing comma in array.`,
+Invalid YAML - missing comma in array.`,
 			expectedErrorLine:   5, // Line 5 in file (line 4 in YAML content - the allowed line)
 			expectedErrorColumn: 29,
 			expectedMessagePart: "',' or ']' must be specified",
