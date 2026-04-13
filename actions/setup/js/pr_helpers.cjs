@@ -101,7 +101,7 @@ async function resolvePullRequestRepo(github, owner, repo, configuredBaseBranch)
  * Tells the agent which branch to create its work branch from, with an
  * optional NOT clause when the effective branch differs from the repo default.
  *
- * @param {string} effectiveBaseBranch - the branch the agent should branch from
+ * @param {string} effectiveBaseBranch - the branch from which the agent should branch
  * @param {string|null} resolvedDefaultBranch - the repo's actual default branch (used in NOT clause)
  * @returns {string}
  */
