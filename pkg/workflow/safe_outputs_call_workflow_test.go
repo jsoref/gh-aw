@@ -79,7 +79,7 @@ func TestBuildCallWorkflowJobs_FallbackPath(t *testing.T) {
 	}
 
 	jobNames, err := compiler.buildCallWorkflowJobs(workflowData, "")
-	require.NoError(t, err, "Should not error with missing WorkflowFiles")
+	require.NoError(t, err, "Should not error if missing WorkflowFiles")
 	assert.Equal(t, []string{"call-worker-a"}, jobNames, "Should generate the job")
 
 	job, exists := compiler.jobManager.GetJob("call-worker-a")
