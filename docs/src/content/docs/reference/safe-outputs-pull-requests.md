@@ -372,7 +372,7 @@ Patterns support `*` (any characters except `/`) and `**` (any characters includ
 > When `allowed-files` is not set, only the `protected-files` policy applies and all non-protected files are permitted.
 
 > [!WARNING]
-> `allowed-files` should enumerate exactly the files the workflow legitimately manages. Overly broad patterns (e.g., `**`) disable all protection.
+> `allowed-files` should enumerate the exact files that the workflow legitimately manages. Overly broad patterns (e.g., `**`) disable all protection.
 
 ### Allowing Workflow File Changes with `allow-workflows`
 
