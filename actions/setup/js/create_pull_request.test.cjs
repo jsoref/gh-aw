@@ -1361,7 +1361,7 @@ describe("create_pull_request - base branch override policy", () => {
   });
 });
 
-describe("create_pull_request - patch apply fallback to original base commit", () => {
+describe("create_pull_request - patch apply falls back to original base commit", () => {
   let tempDir;
   let originalEnv;
   let patchFilePath;
