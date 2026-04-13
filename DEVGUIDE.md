@@ -1103,7 +1103,7 @@ Or create the tag manually:
 
 ```bash
 # Create a new tag following semantic versioning
-# Replace x.y.z with the actual version number
+# Replace 1.0.0 with the actual version number
 git tag -a v1.0.0 -m "Release v1.0.0"
 
 # Push the tag to trigger the release workflow
