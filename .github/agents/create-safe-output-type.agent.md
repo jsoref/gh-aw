@@ -442,7 +442,7 @@ timeout-minutes: 5
 
 Test the new safe output type functionality.
 
-Create a your-new-type output with:
+Create your-new-type output with:
 - required_field: "Hello World"  
 - optional_field: "This is optional"
 
