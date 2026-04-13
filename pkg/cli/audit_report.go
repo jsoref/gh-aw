@@ -729,7 +729,7 @@ func extractPreAgentStepErrors(logsPath string) []ErrorInfo {
 	}}
 }
 
-// parseStepFilename extracts the step number and name from a GitHub Actions step log
+// parseStepFilename extracts the step number and step name from a GitHub Actions step log
 // filename in the format "{step_num}_{step_name}.txt" (e.g. "12_Validate lockdown mode.txt").
 // Returns (0, filename) if the filename does not match the expected format.
 func parseStepFilename(filename string) (int, string) {
