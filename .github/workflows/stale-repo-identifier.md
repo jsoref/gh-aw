@@ -43,7 +43,6 @@ safe-outputs:
     labels: [stale-repository, automated-analysis, cookie]
     max: 10
     group: true
-  upload-asset:
   upload-artifact:
     max-uploads: 5
     retention-days: 30
