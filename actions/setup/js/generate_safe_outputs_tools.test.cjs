@@ -241,7 +241,7 @@ describe("generate_safe_outputs_tools", () => {
 
   it("works when tools_meta file is missing (graceful fallback)", () => {
     fs.writeFileSync(configPath, JSON.stringify({ create_issue: { max: 1 } }));
-    // No tools_meta.json - should still work with fallback to empty meta
+    // No tools_meta.json - should still work while falling back to empty meta
 
     runScript({ GH_AW_SAFE_OUTPUTS_TOOLS_META_PATH: "/nonexistent/tools_meta.json" });
 
