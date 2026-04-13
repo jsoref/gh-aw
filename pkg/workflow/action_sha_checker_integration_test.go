@@ -112,7 +112,7 @@ jobs:
 	// Validation should handle missing cache gracefully
 	err := ValidateActionSHAsInLockFile(lockFile, cache, false)
 	if err != nil {
-		t.Errorf("Unexpected error with missing cache: %v", err)
+		t.Errorf("Unexpected error without cache: %v", err)
 	}
 }
 

@@ -691,7 +691,7 @@ func TestOutputLabelConfigMissingAllowed(t *testing.T) {
 	// Create temporary directory for test files
 	tmpDir := testutil.TempDir(t, "output-label-missing-test")
 
-	// Test case with missing allowed field (should now succeed)
+	// Test case without allowed field (should now succeed)
 	testContent := `---
 on:
   issues:
@@ -718,9 +718,9 @@ This workflow tests that missing allowed field is now optional.
 
 	compiler := NewCompiler()
 
-	// Compile the workflow - should now succeed with missing allowed labels
+	// Compile the workflow - should now succeed without allowed labels
 	if err := compiler.CompileWorkflow(testFile); err != nil {
-		t.Fatalf("Expected compilation to succeed with missing allowed labels, got error: %v", err)
+		t.Fatalf("Expected compilation to succeed without allowed labels, got error: %v", err)
 	}
 
 	// Verify the workflow was compiled successfully

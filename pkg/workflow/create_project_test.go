@@ -143,7 +143,7 @@ func TestParseCreateProjectsConfig(t *testing.T) {
 			expectedNil: true,
 		},
 		{
-			name: "views with missing required fields are skipped",
+			name: "views without required fields are skipped",
 			outputMap: map[string]any{
 				"create-project": map[string]any{
 					"max": 1,

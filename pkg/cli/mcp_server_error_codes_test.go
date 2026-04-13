@@ -45,7 +45,7 @@ func TestMCPServer_ErrorCodes_InvalidParams(t *testing.T) {
 	}
 	defer session.Close()
 
-	// Test 1: add tool with missing workflows parameter
+	// Test 1: add tool without workflows parameter
 	t.Run("add_missing_workflows", func(t *testing.T) {
 		params := &mcp.CallToolParams{
 			Name:      "add",

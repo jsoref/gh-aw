@@ -210,7 +210,7 @@ describe("json_repair_helpers", () => {
     });
 
     describe("real-world scenarios", () => {
-      it("should repair typical agent output with missing closing brace", () => {
+      it("should repair typical agent output without closing brace", () => {
         const json = '{"type": "create_issue", "title": "Bug report", "body": "Description here"';
         expect(repairJson(json)).toBe('{"type": "create_issue", "title": "Bug report", "body": "Description here"}');
       });

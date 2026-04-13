@@ -1493,7 +1493,7 @@ return fmt.Errorf(
 **Examples:**
 - Write permissions in strict mode
 - Wildcard network access in strict mode
-- MCP server with missing network configuration
+- MCP server without network configuration
 - Tool configuration without required permissions
 - Expression size limit exceeded
 

@@ -802,7 +802,7 @@ func TestFrontmatterConfigEdgeCases(t *testing.T) {
 			t.Error("Strict should be true")
 		}
 
-		// Test with missing field (should be nil)
+		// Test without field (should be nil)
 		frontmatter3 := map[string]any{
 			"name": "test",
 		}

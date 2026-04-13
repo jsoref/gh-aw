@@ -417,7 +417,7 @@ jobs:
 	err = os.WriteFile(lockPath, []byte(lockContent), 0644)
 	require.NoError(t, err)
 
-	// Test with missing required input
+	// Test without required input
 	err = validateWorkflowInputs(markdownPath, []string{})
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "Missing required input(s)")

@@ -152,7 +152,7 @@ func TestMCPServer_AddToolInvocation(t *testing.T) {
 		}
 	})
 
-	// Test 2: Call with missing workflows parameter (should fail)
+	// Test 2: Call without workflows parameter (should fail)
 	t.Run("MissingWorkflows", func(t *testing.T) {
 		result, err := session.CallTool(ctx, &mcp.CallToolParams{
 			Name:      "add",
@@ -171,7 +171,7 @@ func TestMCPServer_AddToolInvocation(t *testing.T) {
 			return
 		}
 		if result == nil || !result.IsError {
-			t.Fatal("Expected error when calling add tool with missing workflows parameter")
+			t.Fatal("Expected error when calling add tool without workflows parameter")
 		}
 		if len(result.Content) > 0 {
 			if tc, ok := result.Content[0].(*mcp.TextContent); ok {
