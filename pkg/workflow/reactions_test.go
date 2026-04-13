@@ -25,8 +25,8 @@ func TestIsValidReaction(t *testing.T) {
 		{"invalid reaction", "thumbsup", false},
 		{"empty string is invalid", "", false},
 		{"random string is invalid", "random", false},
-		{"case sensitive - uppercase invalid", "HEART", false},
-		{"case sensitive - mixed case invalid", "Laugh", false},
+		{"case-sensitive - uppercase invalid", "HEART", false},
+		{"case-sensitive - mixed case invalid", "Laugh", false},
 	}
 
 	for _, tt := range tests {

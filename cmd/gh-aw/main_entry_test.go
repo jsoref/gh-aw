@@ -52,7 +52,7 @@ func TestValidateEngine(t *testing.T) {
 			errMessage: "invalid engine value 'gpt4'",
 		},
 		{
-			name:       "invalid engine case sensitive",
+			name:       "invalid engine case-sensitive",
 			engine:     "Claude",
 			expectErr:  true,
 			errMessage: "invalid engine value 'Claude'",

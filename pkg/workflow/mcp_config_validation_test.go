@@ -74,7 +74,7 @@ func TestValidateMCPMountsSyntax(t *testing.T) {
 			errMsg:    "mode must be 'ro' or 'rw'",
 		},
 		{
-			name:      "invalid mode uppercase — case sensitive",
+			name:      "invalid mode uppercase — case-sensitive",
 			toolName:  "my-tool",
 			mountsRaw: []string{"/host/path:/container/path:RO"},
 			wantErr:   true,

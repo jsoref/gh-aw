@@ -44,7 +44,7 @@ func TestSecretsExpressionPattern(t *testing.T) {
 		{"empty", "", false},
 		{"only braces", "${{ }}", false},
 		{"empty secret name", "${{ secrets. }}", false},
-		{"case sensitive context", "${{ Secrets.TOKEN }}", false},
+		{"case-sensitive context", "${{ Secrets.TOKEN }}", false},
 		{"uppercase SECRETS", "${{ SECRETS.TOKEN }}", false},
 		{"text before", "****** secrets.TOKEN }}", false},
 		{"text after", "${{ secrets.TOKEN }} extra", false},
