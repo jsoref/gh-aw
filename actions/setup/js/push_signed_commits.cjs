@@ -1,10 +1,6 @@
 // @ts-check
 /// <reference types="@actions/github-script" />
 
-/** @type {typeof import("fs")} */
-const fs = require("fs");
-/** @type {typeof import("path")} */
-const path = require("path");
 const { ERR_API } = require("./error_codes.cjs");
 
 /**
@@ -78,6 +74,33 @@ function unquoteCPath(s) {
     }
   }
   return Buffer.from(bytes).toString("utf8");
+}
+
+/**
+ * Read a blob from a specific commit as a base64-encoded string using
+ * `git show <sha>:<path>`.  The raw bytes emitted by git are collected via
+ * the `exec.exec` stdout listener so that binary files are not corrupted by
+ * any UTF-8 decoding layer (unlike `exec.getExecOutput` which always passes
+ * stdout through a `StringDecoder('utf8')`).
+ *
+ * @param {string} sha - Commit SHA to read the blob from
+ * @param {string} filePath - Repo-relative path of the file
+ * @param {string} cwd - Working directory of the local git checkout
+ * @returns {Promise<string>} Base64-encoded file contents
+ */
+async function readBlobAsBase64(sha, filePath, cwd) {
+  /** @type {Buffer[]} */
+  const chunks = [];
+  await exec.exec("git", ["show", `${sha}:${filePath}`], {
+    cwd,
+    silent: true,
+    listeners: {
+      stdout: (/** @type {Buffer} */ data) => {
+        chunks.push(data);
+      },
+    },
+  });
+  return Buffer.concat(chunks).toString("base64");
 }
 
 /**
@@ -180,8 +203,7 @@ async function pushSignedCommits({ githubClient, owner, repo, branch, baseRef, c
           if (dstMode === "100755") {
             core.warning(`pushSignedCommits: executable bit on ${renamedPath} will be lost in signed commit (GitHub GraphQL does not support mode 100755)`);
           }
-          const content = fs.readFileSync(path.join(cwd, renamedPath));
-          additions.push({ path: renamedPath, contents: content.toString("base64") });
+          additions.push({ path: renamedPath, contents: await readBlobAsBase64(sha, renamedPath, cwd) });
         } else if (status && status.startsWith("C")) {
           // Copy: source path is kept (no deletion), only the destination path is added
           const copiedPath = unquoteCPath(paths[1]);
@@ -196,8 +218,7 @@ async function pushSignedCommits({ githubClient, owner, repo, branch, baseRef, c
           if (dstMode === "100755") {
             core.warning(`pushSignedCommits: executable bit on ${copiedPath} will be lost in signed commit (GitHub GraphQL does not support mode 100755)`);
           }
-          const content = fs.readFileSync(path.join(cwd, copiedPath));
-          additions.push({ path: copiedPath, contents: content.toString("base64") });
+          additions.push({ path: copiedPath, contents: await readBlobAsBase64(sha, copiedPath, cwd) });
         } else {
           // Added or Modified
           if (dstMode === "120000") {
@@ -207,8 +228,7 @@ async function pushSignedCommits({ githubClient, owner, repo, branch, baseRef, c
           if (dstMode === "100755") {
             core.warning(`pushSignedCommits: executable bit on ${filePath} will be lost in signed commit (GitHub GraphQL does not support mode 100755)`);
           }
-          const content = fs.readFileSync(path.join(cwd, filePath));
-          additions.push({ path: filePath, contents: content.toString("base64") });
+          additions.push({ path: filePath, contents: await readBlobAsBase64(sha, filePath, cwd) });
         }
       }
 
