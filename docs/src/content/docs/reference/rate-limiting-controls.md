@@ -82,7 +82,7 @@ Without limits, one workflow could spawn three agents, each spawning three more,
 
 ## Built-In Delays
 
-Critical operations have hardcoded, non-disableable delays:
+Critical operations have hardcoded, mandatory delays:
 
 - **Agent assignments**: 10-second delay between each assignment
 - **Workflow dispatches**: 5-second delay between each dispatch
