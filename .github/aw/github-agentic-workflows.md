@@ -2540,7 +2540,7 @@ The `--tool` flag provides detailed information about a specific tool, including
 3. **Include security notices** for workflows processing user content
 4. **Use specific tool and safe outputs permissions** rather than broad access
 5. **Monitor costs with `gh aw logs`** to track AI model usage and expenses
-6. **For command triggerd workflows use sanitized context text** - Use `${{ steps.sanitized.outputs.text }}` instead of raw `github.event` fields
+6. **For command triggered workflows use sanitized context text** - Use `${{ steps.sanitized.outputs.text }}` instead of raw `github.event` fields
 7. **Run security scanners** - Use `--actionlint`, `--zizmor`, and `--poutine` flags to scan compiled workflows for security issues, code quality, and supply chain risks
 
 ## Validation
