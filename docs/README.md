@@ -1,4 +1,4 @@
-# Startlight Docs
+# Starlight Docs
 
 ## Project Structure
 
