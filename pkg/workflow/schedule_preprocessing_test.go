@@ -887,28 +887,28 @@ func TestSchedulePreprocessingDailyVariations(t *testing.T) {
 
 func TestSlashCommandShorthand(t *testing.T) {
 	tests := []struct {
-		name                  string
-		frontmatter           map[string]any
-		expectedCommand       string
-		expectWorkflowDispath bool
-		expectedError         bool
-		errorSubstring        string
+		name                   string
+		frontmatter            map[string]any
+		expectedCommand        string
+		expectWorkflowDispatch bool
+		expectedError          bool
+		errorSubstring         string
 	}{
 		{
 			name: "on: /command",
 			frontmatter: map[string]any{
 				"on": "/my-bot",
 			},
-			expectedCommand:       "my-bot",
-			expectWorkflowDispath: true,
+			expectedCommand:        "my-bot",
+			expectWorkflowDispatch: true,
 		},
 		{
 			name: "on: /another-command",
 			frontmatter: map[string]any{
 				"on": "/code-review",
 			},
-			expectedCommand:       "code-review",
-			expectWorkflowDispath: true,
+			expectedCommand:        "code-review",
+			expectWorkflowDispatch: true,
 		},
 		{
 			name: "on: / (empty command)",
