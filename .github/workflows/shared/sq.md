@@ -18,7 +18,7 @@ This shared configuration provides setup for `sq`, a command-line tool that offe
 
 ### About sq
 
-`sq` is the lovechild of sql+jq. It executes jq-like queries or database-native SQL, can join across sources (e.g., join a CSV file to a Postgres table), and outputs to multiple formats including JSON, Excel, CSV, HTML, Markdown, and XML.
+`sq` is the love child of sql+jq. It executes jq-like queries or database-native SQL, can join across sources (e.g., join a CSV file to a Postgres table), and outputs to multiple formats including JSON, Excel, CSV, HTML, Markdown, and XML.
 
 **Links:**
 - Documentation: https://sq.io/
