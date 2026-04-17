@@ -56,7 +56,7 @@ func RunAddInteractive(ctx context.Context, workflowSpecs []string, verbose bool
 
 	// Assert this function is not running in automated unit tests or CI
 	if os.Getenv("GO_TEST_MODE") == "true" || os.Getenv("CI") != "" {
-		return errors.New("interactive add cannot be used in automated tests or CI environments")
+		return errors.New("interactive add does not support automated tests or CI environments")
 	}
 
 	// Auto-detect GHES host from git remote if not already set
