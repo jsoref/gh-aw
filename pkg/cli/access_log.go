@@ -131,7 +131,7 @@ func parseSquidAccessLog(logPath string, verbose bool) (*DomainAnalysis, error) 
 func parseSquidLogLine(line string) (*AccessLogEntry, error) {
 	fields := strings.Fields(line)
 	if len(fields) < 10 {
-		return nil, fmt.Errorf("invalid log line format: expected at least 10 fields, got %d", len(fields))
+		return nil, fmt.Errorf("invalid log line format: expected at least 10 fields. Expected: timestamp duration client status size method url user hierarchy type. Example: 1402908948.177 182 172.16.1.36 TCP_MISS/304 453 GET http://example.com/file.ext sp DIRECT/172.16.1.37 image/gif. Got %d fields", len(fields))
 	}
 
 	return &AccessLogEntry{
