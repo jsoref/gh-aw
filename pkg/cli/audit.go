@@ -78,7 +78,7 @@ Examples:
 			if repoFlag != "" && components.Owner == "" {
 				parts := strings.SplitN(repoFlag, "/", 2)
 				if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
-					return fmt.Errorf("invalid repository format '%s': expected 'owner/repo'", repoFlag)
+					return fmt.Errorf("invalid repository format '%s'. Expected 'owner/repo'. Example: 'myorg/myrepo'", repoFlag)
 				}
 				components.Owner = parts[0]
 				components.Repo = parts[1]
