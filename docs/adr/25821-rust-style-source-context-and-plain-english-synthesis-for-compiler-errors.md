@@ -35,7 +35,7 @@ The existing `formatCompilerErrorWithPosition` path was already used for engine-
 #### Positive
 - Type-conflict errors for `engine:` are now actionable without requiring the user to look up documentation.
 - Engine-name typos now show a Rust-style source snippet with a column pointer, matching output quality of schema-validation errors.
-- The `isTypeConflictLine` predicate is now precise: it rejects constraint-violation lines (e.g., `minItems: got 0, want 1`) that were previously false-positived, reducing noise in other `oneOf` error paths.
+- The `isTypeConflictLine` predicate is now precise: it rejects constraint-violation lines (e.g., `minItems: got 0, want 1`) that were previously marked as false-positives, reducing noise in other `oneOf` error paths.
 
 #### Negative
 - The `knownOneOfFieldHints` table in `pkg/parser/schema_errors.go` is a static list of field paths and valid values. It will silently become stale if built-in engines are added or removed without also updating the table.
