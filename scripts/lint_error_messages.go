@@ -29,7 +29,7 @@ type FileStats struct {
 
 var (
 	// Patterns to detect good error messages.
-	hasExample  = regexp.MustCompile(`(?i)\bexample:\s`)
+	hasExample  = regexp.MustCompile(`(?i)\bexamples?:\s`)
 	hasExpected = regexp.MustCompile(`(?i)\b(expected|valid|must be|should be)\b`)
 
 	// Patterns for error types that MUST have examples.
