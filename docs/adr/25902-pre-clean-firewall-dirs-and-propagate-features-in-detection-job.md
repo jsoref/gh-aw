@@ -10,7 +10,7 @@
 
 ### Context
 
-PR #25868 merged firewall audit/log files (squid.conf, cache.log, access.log, etc.) into the unified agent artifact. When the detection job downloads this artifact, it extracts into `/tmp/gh-aw/`, which pre-populates `sandbox/firewall/logs` and `sandbox/firewall/audit` with files from the completed agent run. The AWF (Agent Workflow Firewall) squid container then crashes on startup with exit code 1 because squid cannot initialize when these directories are already populated by a prior run. Separately, `buildPullAWFContainersStep` constructed a minimal `WorkflowData` without the `Features` field, so when the `copilot-requests` feature flag was enabled, the `cli-proxy` image was silently omitted from the detection job's container pre-pull.
+PR #25868 merged firewall audit/log files (squid.conf, cache.log, access.log, etc.) into the unified agent artifact. When the detection job downloads this artifact, it extracts into `/tmp/gh-aw/`, which prepopulates `sandbox/firewall/logs` and `sandbox/firewall/audit` with files from the completed agent run. The AWF (Agent Workflow Firewall) squid container then crashes on startup with exit code 1 because squid cannot initialize when these directories are already populated by a prior run. Separately, `buildPullAWFContainersStep` constructed a minimal `WorkflowData` without the `Features` field, so when the `copilot-requests` feature flag was enabled, the `cli-proxy` image was silently omitted from the detection job's container pre-pull.
 
 ### Decision
 

@@ -324,7 +324,7 @@ func (c *Compiler) buildClearMCPConfigStep() []string {
 
 // buildCleanFirewallDirsStep creates a step that removes stale firewall files
 // from the directories populated by the agent artifact download. When the agent
-// artifact is extracted to /tmp/gh-aw/, it pre-populates the sandbox/firewall/logs
+// artifact is extracted to /tmp/gh-aw/, it prepopulates the sandbox/firewall/logs
 // and sandbox/firewall/audit directories with files from the agent job (squid.conf,
 // cache.log, access.log, etc.). If these files are present when AWF starts the
 // squid container in the detection job, squid fails to initialise (exit code 1).
