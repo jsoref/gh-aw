@@ -51,7 +51,7 @@ func (c *AddInteractiveConfig) checkGitRepository() error {
 					Validate(func(s string) error {
 						parts := strings.Split(s, "/")
 						if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
-							return errors.New("please enter in format 'owner/repo'")
+							return errors.New("expected: 'owner/repo'")
 						}
 						return nil
 					}),
