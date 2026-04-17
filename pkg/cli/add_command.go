@@ -194,7 +194,7 @@ func AddResolvedWorkflows(workflowStrings []string, resolved *ResolvedWorkflows,
 	if opts.CreatePR {
 		// Check if GitHub CLI is available
 		if !isGHCLIAvailable() {
-			return nil, errors.New("GitHub CLI (gh) is required for PR creation but not available")
+			return nil, errors.New("GitHub CLI (gh) is necessary for PR creation")
 		}
 
 		// Check if we're in a git repository
@@ -325,7 +325,7 @@ func addWorkflowWithTracking(resolved *ResolvedWorkflow, tracker *FileTracker, o
 	var githubWorkflowsDir string
 	if opts.WorkflowDir != "" {
 		if filepath.IsAbs(opts.WorkflowDir) {
-			return fmt.Errorf("workflow directory must be a relative path, got: %s", opts.WorkflowDir)
+			return fmt.Errorf("workflow directory isn't a relative path, got: %s", opts.WorkflowDir)
 		}
 		opts.WorkflowDir = filepath.Clean(opts.WorkflowDir)
 		githubWorkflowsDir = filepath.Join(gitRoot, opts.WorkflowDir)
