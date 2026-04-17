@@ -183,7 +183,7 @@ interface AddLabelsItem extends BaseSafeOutputItem {
   type: "add_labels";
   /** Array of label names to add */
   labels: string[];
-  /** Target issue; otherwize resolved from current context */
+  /** Target issue; otherwise resolved from current context */
   issue_number?: number;
 }
 
