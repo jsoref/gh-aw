@@ -247,7 +247,7 @@ permissions:
   pull-requests: read
 engine: copilot
 steps:
-  - name: Step with with but no uses
+  - name: Step with 'with' but no uses
     with:
       token: ${{ secrets.MY_API_TOKEN }}
     run: echo hi
