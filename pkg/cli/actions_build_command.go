@@ -178,7 +178,7 @@ func validateActionYml(actionPath string) error {
 	requiredFields := []string{"name:", "description:", "runs:"}
 	for _, field := range requiredFields {
 		if !strings.Contains(contentStr, field) {
-			return fmt.Errorf("missing required field '%s'", strings.TrimSuffix(field, ":"))
+			return fmt.Errorf("missing required field '%[1]s'. Expected '%[1]s: ...'", strings.TrimSuffix(field, ":"))
 		}
 	}
 
@@ -187,7 +187,7 @@ func validateActionYml(actionPath string) error {
 	isComposite := strings.Contains(contentStr, "using: 'composite'") || strings.Contains(contentStr, "using: \"composite\"")
 
 	if !isNodeJS && !isComposite {
-		return errors.New("action must use either a 'nodeXX' or 'composite' runtime")
+		return errors.New("action must use proper runtime. Expected: 'using: nodeXX' or 'using: composite' runtime")
 	}
 
 	return nil
