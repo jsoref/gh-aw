@@ -35,7 +35,8 @@ function normalizeRepo(repoValue) {
     return null;
   }
 
-  const maybeRepo = /** @type {any} */ repoValue;
+  /** @type {{ owner?: unknown, repo?: unknown }} */
+  const maybeRepo = repoValue;
   if (typeof maybeRepo.owner === "string" && typeof maybeRepo.repo === "string" && maybeRepo.owner && maybeRepo.repo) {
     return {
       owner: maybeRepo.owner,
@@ -58,12 +59,22 @@ function extractRepoFromPayload(payload) {
     return null;
   }
 
-  const repository = /** @type {any} */ payload.repository;
-  if (!repository || typeof repository !== "object") {
+  /** @type {{ repository?: unknown }} */
+  const payloadObject = payload;
+  const repositoryValue = payloadObject.repository;
+  if (!repositoryValue || typeof repositoryValue !== "object") {
     return null;
   }
+  /** @type {{ owner?: unknown, name?: unknown, repo?: unknown }} */
+  const repository = repositoryValue;
 
-  const owner = typeof repository.owner?.login === "string" ? repository.owner.login : typeof repository.owner === "string" ? repository.owner : undefined;
+  let owner;
+  const ownerValue = repository.owner;
+  if (typeof ownerValue === "string") {
+    owner = ownerValue;
+  } else if (ownerValue && typeof ownerValue === "object" && "login" in ownerValue && typeof ownerValue.login === "string") {
+    owner = ownerValue.login;
+  }
   const repo = typeof repository.name === "string" ? repository.name : typeof repository.repo === "string" ? repository.repo : undefined;
 
   if (owner && repo) {
