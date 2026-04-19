@@ -146,6 +146,32 @@ function appendSafeOutputLine(appendFileSync, safeOutputsPath, payload) {
 }
 
 /**
+ * Wrapper for fs.appendFileSync
+ * @param {string} path
+ * @param {string} data
+ * @param {string} encoding
+ */
+function fs_appendFileSync_wrapper(path, data, encoding) {
+  let params = {};
+  switch (encoding) {
+    case "ascii":
+    case "utf8":
+    case "utf-8":
+    case "utf16le":
+    case "utf-16le":
+    case "ucs2":
+    case "ucs-2":
+    case "base64":
+    case "base64url":
+    case "latin1":
+    case "binary":
+    case "hex":
+      params = { encoding: encoding };
+  }
+  fs.appendFileSync(path, data, params);
+}
+
+/**
  * Append a structured report_incomplete signal when infrastructure failures prevent completion.
  * This allows downstream failure handling to classify transient infrastructure errors explicitly.
  * @param {string} details
@@ -157,7 +183,7 @@ function appendSafeOutputLine(appendFileSync, safeOutputsPath, payload) {
  */
 function emitInfrastructureIncomplete(details, options) {
   const safeOutputsPath = options && typeof options.safeOutputsPath === "string" ? options.safeOutputsPath : process.env.GH_AW_SAFE_OUTPUTS || "";
-  const appendFileSync = options && options.appendFileSync ? options.appendFileSync : fs.appendFileSync;
+  const appendFileSync = options && options.appendFileSync ? options.appendFileSync : fs_appendFileSync_wrapper;
   const logger = options && options.logger ? options.logger : log;
 
   if (!safeOutputsPath) {
