@@ -24,6 +24,25 @@ const { getGitAuthEnv } = require("./git_helpers.cjs");
 
 /** @type {string} Safe output type handled by this module */
 const HANDLER_TYPE = "push_to_pull_request_branch";
+const MISSING_BRANCH_ERROR_TEMPLATE = branchName => `Branch ${branchName} no longer exists on origin (it may have been deleted), can't push to it.`;
+const MISSING_REMOTE_REF_PATTERNS = [
+  "couldn't find remote ref",
+  "could not find remote ref",
+  "remote ref does not exist",
+  "did not match any file(s) known to git",
+  "unknown revision or path not in the working tree",
+  "fatal: couldn't find remote ref",
+  "exit code 128",
+];
+
+/**
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+function looksLikeMissingRemoteBranchError(value) {
+  const text = String(value ?? "").toLowerCase();
+  return MISSING_REMOTE_REF_PATTERNS.some(pattern => text.includes(pattern));
+}
 
 /**
  * Main handler factory for push_to_pull_request_branch
@@ -36,6 +55,7 @@ async function main(config = {}) {
   const titlePrefix = config.title_prefix || "";
   const envLabels = config.labels ? (Array.isArray(config.labels) ? config.labels : config.labels.split(",")).map(label => String(label).trim()).filter(label => label) : [];
   const ifNoChanges = config.if_no_changes || "warn";
+  const ignoreMissingBranchFailure = config.ignore_missing_branch_failure === true;
   const commitTitleSuffix = config.commit_title_suffix || "";
   const maxSizeKb = config.max_patch_size ? parseInt(String(config.max_patch_size), 10) : 1024;
   const maxCount = config.max || 0; // 0 means no limit
@@ -70,6 +90,7 @@ async function main(config = {}) {
     core.info(`Required labels: ${envLabels.join(", ")}`);
   }
   core.info(`If no changes: ${ifNoChanges}`);
+  core.info(`Ignore missing branch failure: ${ignoreMissingBranchFailure}`);
   if (commitTitleSuffix) {
     core.info(`Commit title suffix: ${commitTitleSuffix}`);
   }
@@ -464,9 +485,18 @@ async function main(config = {}) {
       });
 
       if (lsRemoteResult.exitCode === 2) {
+        const missingBranchError = MISSING_BRANCH_ERROR_TEMPLATE(branchName);
+        if (ignoreMissingBranchFailure) {
+          core.warning(`${missingBranchError} Skipping as configured by ignore-missing-branch-failure.`);
+          return {
+            success: false,
+            error: missingBranchError,
+            skipped: true,
+          };
+        }
         return {
           success: false,
-          error: `Branch ${branchName} no longer exists on origin (it may have been deleted), can't push to it.`,
+          error: missingBranchError,
         };
       }
 
@@ -488,6 +518,12 @@ async function main(config = {}) {
         env: { ...process.env, ...gitAuthEnv },
       });
     } catch (fetchError) {
+      const fetchErrorMessage = fetchError instanceof Error ? fetchError.message : String(fetchError);
+      if (ignoreMissingBranchFailure && looksLikeMissingRemoteBranchError(fetchErrorMessage)) {
+        const missingBranchError = MISSING_BRANCH_ERROR_TEMPLATE(branchName);
+        core.warning(`${missingBranchError} Skipping as configured by ignore-missing-branch-failure.`);
+        return { success: false, error: missingBranchError, skipped: true };
+      }
       return { success: false, error: `Failed to fetch branch ${branchName}: ${fetchError instanceof Error ? fetchError.message : String(fetchError)}` };
     }
 
@@ -495,6 +531,11 @@ async function main(config = {}) {
     try {
       await exec.exec(`git rev-parse --verify origin/${branchName}`);
     } catch (verifyError) {
+      const missingBranchError = MISSING_BRANCH_ERROR_TEMPLATE(branchName);
+      if (ignoreMissingBranchFailure) {
+        core.warning(`${missingBranchError} Skipping as configured by ignore-missing-branch-failure.`);
+        return { success: false, error: missingBranchError, skipped: true };
+      }
       return { success: false, error: `Branch ${branchName} does not exist on origin, can't push to it: ${verifyError instanceof Error ? verifyError.message : String(verifyError)}` };
     }
 
