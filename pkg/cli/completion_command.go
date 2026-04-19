@@ -62,7 +62,7 @@ Examples:
 			case "powershell":
 				return cmd.Root().GenPowerShellCompletion(os.Stdout)
 			default:
-				return fmt.Errorf("unsupported shell: %s", shell)
+				return fmt.Errorf("unsupported shell: %s. Example: bash. Expected: bash, zsh, fish, or powershell", shell)
 			}
 		},
 	}
